@@ -45,39 +45,26 @@ Este proyecto forma parte del proceso de formación dentro del programa y repres
 Para el diseño y funcionalidades del proyecto se tomaron como referencia distintos sitios del mercado que ofrecen experiencias de compra similares o que presentan buenas prácticas de diseño y navegación.
 
 ### 1️⃣ Mercado Libre
-
 https://www.mercadolibre.com.ar
 
 Elegido por ser uno de los marketplaces más grandes de Latinoamérica y por su sistema de búsqueda, navegación por categorías y experiencia de compra.
 
----
-
 ### 2️⃣ Get Back Music Store
-
 https://www.get-back.com.ar
 
 Tienda especializada en instrumentos musicales y equipamiento profesional. Se tomó como referencia por su catálogo de productos y organización por categorías.
 
----
-
 ### 3️⃣ SDQ Store
-
 https://www.sdqstore.com.ar
 
 Empresa argentina con amplia trayectoria en la venta de instrumentos musicales. Fue elegida como referencia por su estructura de e-commerce y variedad de productos.
 
----
-
 ### 4️⃣ The Rock Store
-
 https://therockstore.com.ar
 
 Sitio especializado en instrumentos musicales y equipamiento de audio. Se destaca por su diseño visual y organización del catálogo de productos.
 
----
-
 ### 5️⃣ Centro Música
-
 https://centromusica.com.ar
 
 Tienda dedicada a la comercialización de instrumentos musicales y equipos de sonido. Se tomó como referencia por su presentación de productos y categorías.
@@ -102,39 +89,73 @@ El e-commerce contará con las siguientes funcionalidades principales:
 Durante el desarrollo del proyecto se utilizarán distintas tecnologías del ecosistema Full Stack:
 
 **Frontend**
-
 * HTML
 * CSS
 * JavaScript
 * React
 
 **Backend**
-
 * Node.js
 * Express
 
 **Base de datos**
-
 * MySQL
 
 ---
 
-## Estructura inicial del proyecto
+## 📁 Estructura del proyecto
 
-El repositorio contará con la siguiente organización inicial:
-
-wireframes/
-
-home
-product-detail
-cart
-register
-login
-
-design/
-
-logo
-colores
-tipografías
+```
+DPFS_nicolas_cussi/
+│
+├── index.html                  ← Home
+│
+├── README.md
+├── retro.md
+│
+├── Views/                      ← Páginas HTML
+│   ├── productDetail.html
+│   ├── productCart.html
+│   ├── register.html
+│   └── login.html
+│
+├── styles/
+│   └── style.css
+│
+├── images/
+│   ├── logo/
+│   ├── banner/
+│   ├── products/
+│   └── categories/
+│
+└── wireframes/
+    ├── wireframe_home.svg
+    ├── wireframe_detalle_producto.svg
+    ├── wireframe_carrito.svg
+    ├── wireframe_registro.svg
+    └── wireframe_login.svg
+```
 
 ---
+
+## 📌 Tablero de trabajo
+
+[Ver tablero en GitHub Projects](https://github.com/users/Prof-NkoCussi/projects/1)
+
+---
+
+## 🚀 Estado del proyecto
+
+| Sprint | Descripción | Estado |
+|--------|-------------|--------|
+| Sprint 1 | Planificación, wireframes y README | ✅ Completado |
+| Sprint 2 | Maquetado HTML/CSS | 🔄 En progreso |
+| Sprint 3 | React — componentes y rutas | ⏳ Pendiente |
+| Sprint 4 | React — estado y carrito | ⏳ Pendiente |
+| Sprint 5 | Backend — Node.js y Express | ⏳ Pendiente |
+| Sprint 6 | Base de datos y API REST | ⏳ Pendiente |
+| Sprint 7 | Integración frontend-backend | ⏳ Pendiente |
+| Sprint 8 | Deploy y entrega final | ⏳ Pendiente |
+
+---
+
