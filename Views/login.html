@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión — Ushuaia MusicStore</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/forms.css" />
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+  ================================================ -->
+  <header class="navbar">
+    <div class="container">
+
+      <a href="../index.html" class="navbar-brand">
+        <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+      </a>
+
+      <nav class="navbar-nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Categorías ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="#">Guitarras</a>
+            <a href="#">Teclados</a>
+            <a href="#">Baterías</a>
+            <a href="#">Micrófonos</a>
+          </div>
+        </div>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="login.html" class="navbar-login active-login">Iniciar sesión</a>
+        <span class="navbar-separator"></span>
+        <a href="productCart.html" class="navbar-cart">
+          🛒 Carrito <span class="cart-count">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================
+       SECCIÓN LOGIN
+  ================================================ -->
+  <section class="auth-section">
+    <div class="container">
+
+      <div class="auth-card login-card">
+
+        <!-- Encabezado -->
+        <div class="auth-header">
+          <div class="auth-logo">🎸</div>
+          <h1 class="auth-title">Iniciar sesión</h1>
+          <p class="auth-subtitle">Ingresá con tu cuenta de Ushuaia MusicStore</p>
+        </div>
+
+        <!-- Formulario -->
+        <form class="auth-form" id="loginForm" novalidate>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="ejemplo@email.com"
+              autocomplete="email"
+            />
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="form-group">
+            <label class="form-label" for="password">Contraseña</label>
+            <div class="input-password-wrapper">
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder="Tu contraseña"
+                autocomplete="current-password"
+              />
+              <button type="button" class="toggle-password" onclick="togglePassword('password', this)">👁</button>
+            </div>
+            <span class="form-error" id="passwordError"></span>
+          </div>
+
+          <!-- Recordarme + olvidé contraseña -->
+          <div class="login-options">
+            <label class="form-check">
+              <input type="checkbox" id="remember" />
+              Recordarme
+            </label>
+            <div class="forgot-password">
+              <a href="#" class="form-link" onclick="showForgot(event)">¿Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+
+          <!-- Recuperar contraseña (oculto por defecto) -->
+          <div class="forgot-form" id="forgotForm" style="display:none;">
+            <div class="form-group">
+              <label class="form-label" for="forgotEmail">Ingresá tu email para recuperar tu contraseña</label>
+              <div class="forgot-input-row">
+                <input
+                  type="email"
+                  id="forgotEmail"
+                  class="form-input"
+                  placeholder="ejemplo@email.com"
+                />
+                <button type="button" class="btn btn-dark btn-sm" onclick="sendRecovery()">Enviar</button>
+              </div>
+              <p class="forgot-msg" id="forgotMsg"></p>
+            </div>
+          </div>
+
+          <!-- Botón ingresar -->
+          <button type="submit" class="btn btn-primary btn-lg btn-full">
+            Ingresar
+          </button>
+
+          <!-- Alerta error -->
+          <div class="form-alert error" id="loginError" style="display:none;">
+            ⚠️ Email o contraseña incorrectos. Intentá de nuevo.
+          </div>
+
+          <!-- Alerta éxito -->
+          <div class="form-alert success" id="loginSuccess" style="display:none;">
+            ✅ ¡Sesión iniciada! Redirigiendo al inicio...
+          </div>
+
+        </form>
+
+        <!-- Divider social -->
+        <div class="divider">o ingresá con</div>
+
+        <div class="social-buttons">
+          <button class="btn-social">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" />
+            Continuar con Google
+          </button>
+          <button class="btn-social">
+            <img src="https://www.svgrepo.com/show/448224/facebook.svg" alt="Facebook" width="20" />
+            Continuar con Facebook
+          </button>
+        </div>
+
+        <!-- Link registro -->
+        <p class="auth-switch">
+          ¿No tenés cuenta? <a href="register.html" class="form-link">Registrate gratis</a>
+        </p>
+
+        <!-- Link volver -->
+        <p class="auth-switch">
+          <a href="../index.html" class="form-link-muted">← Volver al inicio</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+          <p>Tu tienda de instrumentos musicales. Los mejores productos para músicos de todos los niveles.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+            <a href="#" class="social-link">yt</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#">Guitarras</a></li>
+            <li><a href="#">Teclados</a></li>
+            <li><a href="#">Baterías</a></li>
+            <li><a href="#">Micrófonos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">📍 Ushuaia, Tierra del Fuego</a></li>
+            <li><a href="#">📞 +54 2901 000-000</a></li>
+            <li><a href="#">✉️ info@ushuaiamusicstore.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Ushuaia MusicStore — Todos los derechos reservados</span>
+        <span>Desarrollado por Nicolas Cussi — Digital House</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================================================
+       JS — Validación login
+  ================================================ -->
+  <script>
+    // Mostrar/ocultar contraseña
+    function togglePassword(id, btn) {
+      const input = document.getElementById(id);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁';
+      }
+    }
+
+    // Mostrar formulario recuperar contraseña
+    function showForgot(e) {
+      e.preventDefault();
+      const form = document.getElementById('forgotForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Enviar recuperación
+    function sendRecovery() {
+      const email = document.getElementById('forgotEmail').value.trim();
+      const msg = document.getElementById('forgotMsg');
+      if (!email) {
+        msg.textContent = '⚠️ Ingresá tu email.';
+        msg.style.color = 'var(--color-danger)';
+      } else {
+        msg.textContent = '✅ Te enviamos un link de recuperación a ' + email;
+        msg.style.color = 'var(--color-success)';
+      }
+    }
+
+    // Validación del login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      // Limpiar errores
+      ['email', 'password'].forEach(id => {
+        document.getElementById(id).classList.remove('error');
+      });
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('loginError').style.display = 'none';
+      document.getElementById('loginSuccess').style.display = 'none';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // Validar email
+      if (!email) {
+        document.getElementById('email').classList.add('error');
+        document.getElementById('emailError').textContent = 'El email es obligatorio.';
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('email').classList.add('error');
+        document.getElementById('emailError').textContent = 'Ingresá un email válido.';
+        valid = false;
+      }
+
+      // Validar contraseña
+      if (!password) {
+        document.getElementById('password').classList.add('error');
+        document.getElementById('passwordError').textContent = 'La contraseña es obligatoria.';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Simulación: credenciales de prueba
+      const validEmail = 'test@musicstore.com';
+      const validPass = 'Music123!';
+
+      if (email === validEmail && password === validPass) {
+        document.getElementById('loginSuccess').style.display = 'block';
+        setTimeout(() => { window.location.href = '../index.html'; }, 2000);
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('email').classList.add('error');
+        document.getElementById('password').classList.add('error');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+/* ============================================================
+   USHUAIA MUSICSTORE — Product Cart CSS
+   ============================================================ */
+
+/* Breadcrumb */
+.breadcrumb-wrapper {
+  background-color: var(--color-gray-100);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: var(--space-sm) 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
+}
+
+.breadcrumb a {
+  color: var(--color-gray-600);
+  transition: color var(--transition);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-turquoise);
+}
+
+.breadcrumb-sep {
+  color: var(--color-gray-400);
+}
+
+.breadcrumb-current {
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+
+/* ── Header del carrito ───────────────────────────────────── */
+.cart-header {
+  margin-bottom: var(--space-xl);
+}
+
+.cart-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.cart-title span {
+  color: var(--color-turquoise);
+}
+
+
+/* ── Layout principal ─────────────────────────────────────── */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+
+/* ── Tabla de productos ───────────────────────────────────── */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cart-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Item del carrito */
+.cart-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: var(--space-md);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-200);
+  transition: box-shadow var(--transition);
+}
+
+.cart-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Columna producto */
+.cart-item-product {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background-color: var(--color-gray-100);
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.cart-item-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.cart-item-name:hover {
+  color: var(--color-turquoise);
+}
+
+.cart-item-attrs {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+}
+
+.cart-item-remove {
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+  transition: opacity var(--transition);
+}
+
+.cart-item-remove:hover {
+  opacity: 0.7;
+}
+
+/* Precio y subtotal */
+.cart-item-price,
+.cart-item-subtotal {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.cart-item-subtotal {
+  font-size: var(--text-md);
+  color: var(--color-navy);
+}
+
+/* Selector de cantidad */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 34px;
+  height: 34px;
+  background-color: var(--color-gray-100);
+  color: var(--color-navy);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background-color: var(--color-turquoise);
+  color: var(--color-white);
+}
+
+.quantity-selector input {
+  width: 44px;
+  height: 34px;
+  text-align: center;
+  border: none;
+  border-left: 1.5px solid var(--color-gray-200);
+  border-right: 1.5px solid var(--color-gray-200);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy);
+  background-color: var(--color-white);
+}
+
+
+/* ── Acciones del carrito ─────────────────────────────────── */
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-sm);
+}
+
+
+/* ── Cupón ────────────────────────────────────────────────── */
+.cart-coupon {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.cart-coupon h3 {
+  font-size: var(--text-md);
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+
+.coupon-form {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.coupon-form .form-input {
+  flex: 1;
+}
+
+.coupon-msg {
+  font-size: var(--text-sm);
+  margin-top: var(--space-sm);
+  font-weight: 500;
+}
+
+
+/* ── Resumen del pedido ───────────────────────────────────── */
+.cart-summary {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--space-lg));
+  box-shadow: var(--shadow-md);
+}
+
+.cart-summary-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.cart-summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}
+
+.cart-summary-divider {
+  height: 1px;
+  background-color: var(--color-gray-200);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.cart-summary-back {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+  transition: color var(--transition);
+}
+
+.cart-summary-back:hover {
+  color: var(--color-turquoise);
+}
+
+
+/* ── Métodos de pago ──────────────────────────────────────── */
+.payment-methods {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.payment-label {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.payment-badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.payment-badge {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-gray-600);
+  background-color: var(--color-gray-100);
+}
+
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cart-layout {
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+  }
+
+  .cart-table-header {
+    display: none;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .cart-item-product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-price::before { content: 'Precio: '; font-weight: 400; color: var(--color-gray-400); }
+  .cart-item-subtotal::before { content: 'Subtotal: '; font-weight: 400; color: var(--color-gray-400); }
+
+  .cart-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .coupon-form {
+    flex-direction: column;
+  }
+}

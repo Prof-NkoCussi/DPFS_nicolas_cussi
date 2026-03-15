@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito de Compras — Ushuaia MusicStore</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/productCart.css" />
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+  ================================================ -->
+  <header class="navbar">
+    <div class="container">
+
+      <a href="../index.html" class="navbar-brand">
+        <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+      </a>
+
+      <nav class="navbar-nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Categorías ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="#">Guitarras</a>
+            <a href="#">Teclados</a>
+            <a href="#">Baterías</a>
+            <a href="#">Micrófonos</a>
+          </div>
+        </div>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="login.html" class="navbar-login">Iniciar sesión</a>
+        <span class="navbar-separator"></span>
+        <a href="productCart.html" class="navbar-cart active">
+          🛒 Carrito <span class="cart-count">3</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================
+       BREADCRUMB
+  ================================================ -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html">Inicio</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Carrito de compras</span>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- ================================================
+       CARRITO
+  ================================================ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Título -->
+      <div class="cart-header">
+        <h1 class="cart-title">Carrito de <span>Compras</span></h1>
+        <p class="text-muted">3 productos en tu carrito</p>
+      </div>
+
+      <div class="cart-layout">
+
+        <!-- ── Columna izquierda: Productos ── -->
+        <div class="cart-items">
+
+          <!-- Cabecera tabla -->
+          <div class="cart-table-header">
+            <span class="col-product">Producto</span>
+            <span class="col-price">Precio</span>
+            <span class="col-qty">Cantidad</span>
+            <span class="col-subtotal">Subtotal</span>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="cart-item" id="item-1">
+            <div class="cart-item-product">
+              <a href="productDetail.html">
+                <img src="../images/products/guitarra-01.jpg" alt="Guitarra Eléctrica Pro" class="cart-item-img" />
+              </a>
+              <div class="cart-item-info">
+                <a href="productDetail.html" class="cart-item-name">Guitarra Eléctrica Pro</a>
+                <p class="cart-item-attrs">Color: Negro &nbsp;|&nbsp; Marca: Fender</p>
+                <button class="cart-item-remove" onclick="removeItem('item-1')">🗑 Eliminar</button>
+              </div>
+            </div>
+            <div class="cart-item-price">$89.999</div>
+            <div class="cart-item-qty">
+              <div class="quantity-selector">
+                <button class="qty-btn" onclick="changeQty('qty-1', -1)">−</button>
+                <input type="number" id="qty-1" value="1" min="1" max="12" readonly />
+                <button class="qty-btn" onclick="changeQty('qty-1', 1)">+</button>
+              </div>
+            </div>
+            <div class="cart-item-subtotal" id="sub-1">$89.999</div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="cart-item" id="item-2">
+            <div class="cart-item-product">
+              <a href="productDetail.html">
+                <img src="../images/products/teclado-01.jpg" alt="Teclado MIDI" class="cart-item-img" />
+              </a>
+              <div class="cart-item-info">
+                <a href="productDetail.html" class="cart-item-name">Teclado MIDI 61 Teclas</a>
+                <p class="cart-item-attrs">Color: Blanco &nbsp;|&nbsp; Marca: Yamaha</p>
+                <button class="cart-item-remove" onclick="removeItem('item-2')">🗑 Eliminar</button>
+              </div>
+            </div>
+            <div class="cart-item-price">$64.500</div>
+            <div class="cart-item-qty">
+              <div class="quantity-selector">
+                <button class="qty-btn" onclick="changeQty('qty-2', -1)">−</button>
+                <input type="number" id="qty-2" value="2" min="1" max="12" readonly />
+                <button class="qty-btn" onclick="changeQty('qty-2', 1)">+</button>
+              </div>
+            </div>
+            <div class="cart-item-subtotal" id="sub-2">$129.000</div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="cart-item" id="item-3">
+            <div class="cart-item-product">
+              <a href="productDetail.html">
+                <img src="../images/products/microfono-01.jpg" alt="Micrófono Condensador" class="cart-item-img" />
+              </a>
+              <div class="cart-item-info">
+                <a href="productDetail.html" class="cart-item-name">Micrófono Condensador Pro</a>
+                <p class="cart-item-attrs">Color: Plateado &nbsp;|&nbsp; Marca: AKG</p>
+                <button class="cart-item-remove" onclick="removeItem('item-3')">🗑 Eliminar</button>
+              </div>
+            </div>
+            <div class="cart-item-price">$38.000</div>
+            <div class="cart-item-qty">
+              <div class="quantity-selector">
+                <button class="qty-btn" onclick="changeQty('qty-3', -1)">−</button>
+                <input type="number" id="qty-3" value="1" min="1" max="12" readonly />
+                <button class="qty-btn" onclick="changeQty('qty-3', 1)">+</button>
+              </div>
+            </div>
+            <div class="cart-item-subtotal" id="sub-3">$38.000</div>
+          </div>
+
+          <!-- Acciones del carrito -->
+          <div class="cart-actions">
+            <a href="../index.html" class="btn btn-secondary btn-sm">← Seguir comprando</a>
+            <button class="btn btn-danger btn-sm" onclick="clearCart()">🗑 Vaciar carrito</button>
+          </div>
+
+          <!-- Cupón de descuento -->
+          <div class="cart-coupon">
+            <h3>¿Tenés un cupón de descuento?</h3>
+            <div class="coupon-form">
+              <input
+                type="text"
+                class="form-input"
+                id="couponInput"
+                placeholder="Ingresá tu código aquí"
+              />
+              <button class="btn btn-dark" onclick="applyCoupon()">Aplicar</button>
+            </div>
+            <p class="coupon-msg" id="couponMsg"></p>
+          </div>
+
+        </div>
+
+
+        <!-- ── Columna derecha: Resumen ── -->
+        <div class="cart-summary">
+          <h2 class="cart-summary-title">Resumen del pedido</h2>
+
+          <div class="cart-summary-rows">
+            <div class="summary-row">
+              <span>Subtotal (4 items)</span>
+              <span id="summarySubtotal">$256.999</span>
+            </div>
+            <div class="summary-row">
+              <span>Descuento</span>
+              <span class="text-success" id="summaryDiscount">− $0</span>
+            </div>
+            <div class="summary-row">
+              <span>Envío</span>
+              <span class="text-success">Gratis 🚚</span>
+            </div>
+          </div>
+
+          <div class="cart-summary-divider"></div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="summaryTotal">$256.999</span>
+          </div>
+
+          <a href="#" class="btn btn-primary btn-lg btn-full">
+            Finalizar compra
+          </a>
+
+          <a href="../index.html" class="cart-summary-back">
+            ← Seguir comprando
+          </a>
+
+          <!-- Métodos de pago -->
+          <div class="payment-methods">
+            <p class="payment-label">Métodos de pago aceptados</p>
+            <div class="payment-badges">
+              <span class="payment-badge">VISA</span>
+              <span class="payment-badge">MASTER</span>
+              <span class="payment-badge">AMEX</span>
+              <span class="payment-badge">PAYPAL</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+          <p>Tu tienda de instrumentos musicales. Los mejores productos para músicos de todos los niveles.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+            <a href="#" class="social-link">yt</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#">Guitarras</a></li>
+            <li><a href="#">Teclados</a></li>
+            <li><a href="#">Baterías</a></li>
+            <li><a href="#">Micrófonos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">📍 Ushuaia, Tierra del Fuego</a></li>
+            <li><a href="#">📞 +54 2901 000-000</a></li>
+            <li><a href="#">✉️ info@ushuaiamusicstore.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Ushuaia MusicStore — Todos los derechos reservados</span>
+        <span>Desarrollado por Nicolas Cussi — Digital House</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================================================
+       JS — Carrito básico
+  ================================================ -->
+  <script>
+    // Eliminar item
+    function removeItem(id) {
+      const item = document.getElementById(id);
+      if (item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = 'all 0.3s ease';
+        setTimeout(() => item.remove(), 300);
+      }
+    }
+
+    // Cambiar cantidad
+    function changeQty(inputId, delta) {
+      const input = document.getElementById(inputId);
+      const newVal = parseInt(input.value) + delta;
+      if (newVal >= 1 && newVal <= 12) {
+        input.value = newVal;
+      }
+    }
+
+    // Vaciar carrito
+    function clearCart() {
+      const items = document.querySelectorAll('.cart-item');
+      items.forEach(item => item.remove());
+    }
+
+    // Aplicar cupón
+    function applyCoupon() {
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      const msg = document.getElementById('couponMsg');
+      if (code === 'MUSIC10') {
+        msg.textContent = '✅ Cupón aplicado — 10% de descuento';
+        msg.style.color = 'var(--color-success)';
+      } else {
+        msg.textContent = '❌ Cupón inválido o expirado';
+        msg.style.color = 'var(--color-danger)';
+      }
+    }
+  </script>
+
+</body>
+</html>

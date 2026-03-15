@@ -1,0 +1,321 @@
+/* ============================================================
+   USHUAIA MUSICSTORE — Forms CSS (register + login)
+   ============================================================ */
+
+/* ── Sección auth ─────────────────────────────────────────── */
+.auth-section {
+  min-height: calc(100vh - var(--navbar-height) - 200px);
+  display: flex;
+  align-items: center;
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-gray-100);
+}
+
+.auth-section .container {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ── Card del formulario ──────────────────────────────────── */
+.auth-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2xl);
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Card más angosta para login */
+.auth-card.login-card {
+  max-width: 460px;
+}
+
+
+/* ── Encabezado ───────────────────────────────────────────── */
+.auth-header {
+  text-align: center;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.auth-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+}
+
+
+/* ── Formulario ───────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Fila de dos columnas */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* Separador de sección dentro del form */
+.form-section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--color-gray-400);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-section-label::before,
+.form-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-gray-200);
+}
+
+
+/* ── Input con botón de contraseña ────────────────────────── */
+.input-password-wrapper {
+  position: relative;
+}
+
+.input-password-wrapper .form-input {
+  padding-right: 3rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-md);
+  color: var(--color-gray-400);
+  transition: color var(--transition);
+  padding: 0;
+}
+
+.toggle-password:hover {
+  color: var(--color-navy);
+}
+
+
+/* ── Barra de fortaleza ───────────────────────────────────── */
+.strength-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.strength-track {
+  flex: 1;
+  height: 5px;
+  background-color: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.strength-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  min-width: 60px;
+}
+
+
+/* ── Checkboxes ───────────────────────────────────────────── */
+.form-checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-link {
+  color: var(--color-turquoise);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.form-link:hover {
+  color: var(--color-turquoise-dark);
+  text-decoration: underline;
+}
+
+
+/* ── Alertas ──────────────────────────────────────────────── */
+.form-alert {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-alert.error {
+  background-color: rgba(230, 57, 70, 0.08);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  color: var(--color-danger);
+}
+
+.form-alert.success {
+  background-color: rgba(40, 167, 69, 0.08);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+  color: var(--color-success);
+}
+
+
+/* ── Botones sociales ─────────────────────────────────────── */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.7rem 1.5rem;
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-gray-800);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-social:hover {
+  border-color: var(--color-turquoise);
+  background-color: var(--color-gray-100);
+}
+
+
+/* ── Link de cambio (login/register) ─────────────────────── */
+.auth-switch {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}
+
+
+/* ── Link olvidé contraseña ───────────────────────────────── */
+.forgot-password {
+  text-align: right;
+  font-size: var(--text-sm);
+}
+
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .auth-card {
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── Login: ícono superior ────────────────────────────────── */
+.auth-logo {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Login: fila recordarme + olvidé contraseña ───────────── */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* ── Recuperar contraseña ─────────────────────────────────── */
+.forgot-form {
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.forgot-input-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.forgot-input-row .form-input {
+  flex: 1;
+}
+
+.forgot-msg {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  margin-top: var(--space-sm);
+}
+
+/* ── Link muted (volver al inicio) ───────────────────────── */
+.form-link-muted {
+  color: var(--color-gray-400);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.form-link-muted:hover {
+  color: var(--color-turquoise);
+}
+
+/* navbar login activo */
+.active-login {
+  color: var(--color-turquoise) !important;
+}
+
+@media (max-width: 600px) {
+  .login-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .forgot-input-row {
+    flex-direction: column;
+  }
+}

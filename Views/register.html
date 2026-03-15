@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear cuenta — Ushuaia MusicStore</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/forms.css" />
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+  ================================================ -->
+  <header class="navbar">
+    <div class="container">
+
+      <a href="../index.html" class="navbar-brand">
+        <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+      </a>
+
+      <nav class="navbar-nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Categorías ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="#">Guitarras</a>
+            <a href="#">Teclados</a>
+            <a href="#">Baterías</a>
+            <a href="#">Micrófonos</a>
+          </div>
+        </div>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="login.html" class="navbar-login">Iniciar sesión</a>
+        <span class="navbar-separator"></span>
+        <a href="productCart.html" class="navbar-cart">
+          🛒 Carrito <span class="cart-count">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================
+       SECCIÓN REGISTRO
+  ================================================ -->
+  <section class="auth-section">
+    <div class="container">
+
+      <div class="auth-card">
+
+        <!-- Encabezado -->
+        <div class="auth-header">
+          <h1 class="auth-title">Crear una cuenta</h1>
+          <p class="auth-subtitle">Completá tus datos para registrarte en Ushuaia MusicStore</p>
+        </div>
+
+        <!-- Formulario -->
+        <form class="auth-form" id="registerForm" novalidate>
+
+          <!-- Fila: Nombre y Apellido -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">Nombre</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-input"
+                placeholder="Tu nombre"
+                autocomplete="given-name"
+              />
+              <span class="form-error" id="firstNameError"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Apellido</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-input"
+                placeholder="Tu apellido"
+                autocomplete="family-name"
+              />
+              <span class="form-error" id="lastNameError"></span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="ejemplo@email.com"
+              autocomplete="email"
+            />
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="form-group">
+            <label class="form-label" for="phone">Teléfono</label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-input"
+              placeholder="+54 11 0000-0000"
+              autocomplete="tel"
+            />
+            <span class="form-error" id="phoneError"></span>
+          </div>
+
+          <!-- Fecha de nacimiento -->
+          <div class="form-group">
+            <label class="form-label" for="birthdate">Fecha de nacimiento</label>
+            <input
+              type="date"
+              id="birthdate"
+              class="form-input"
+              autocomplete="bday"
+            />
+            <span class="form-error" id="birthdateError"></span>
+          </div>
+
+          <!-- Separador seguridad -->
+          <div class="form-section-label">
+            <span>Seguridad</span>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="form-group">
+            <label class="form-label" for="password">Contraseña</label>
+            <div class="input-password-wrapper">
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder="Mínimo 8 caracteres"
+                oninput="checkStrength(this.value)"
+                autocomplete="new-password"
+              />
+              <button type="button" class="toggle-password" onclick="togglePassword('password', this)">👁</button>
+            </div>
+            <!-- Barra de fortaleza -->
+            <div class="strength-bar">
+              <div class="strength-track">
+                <div class="strength-fill" id="strengthFill"></div>
+              </div>
+              <span class="strength-label" id="strengthLabel"></span>
+            </div>
+            <span class="form-error" id="passwordError"></span>
+          </div>
+
+          <!-- Confirmar contraseña -->
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Confirmar contraseña</label>
+            <div class="input-password-wrapper">
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-input"
+                placeholder="Repetí tu contraseña"
+                autocomplete="new-password"
+              />
+              <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁</button>
+            </div>
+            <span class="form-error" id="confirmPasswordError"></span>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="form-checks">
+            <label class="form-check">
+              <input type="checkbox" id="terms" />
+              Acepto los <a href="#" class="form-link">Términos y Condiciones</a> y la <a href="#" class="form-link">Política de Privacidad</a>
+            </label>
+            <span class="form-error" id="termsError"></span>
+
+            <label class="form-check">
+              <input type="checkbox" id="newsletter" />
+              Quiero recibir ofertas y novedades por email
+            </label>
+          </div>
+
+          <!-- Botón registrarse -->
+          <button type="submit" class="btn btn-primary btn-lg btn-full">
+            Crear cuenta
+          </button>
+
+          <!-- Mensaje de error general -->
+          <div class="form-alert error" id="formError" style="display:none;">
+            ⚠️ Por favor corregí los errores antes de continuar.
+          </div>
+
+          <!-- Mensaje de éxito -->
+          <div class="form-alert success" id="formSuccess" style="display:none;">
+            ✅ ¡Cuenta creada con éxito! Redirigiendo...
+          </div>
+
+        </form>
+
+        <!-- Divider social -->
+        <div class="divider">o registrate con</div>
+
+        <div class="social-buttons">
+          <button class="btn-social">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" />
+            Continuar con Google
+          </button>
+          <button class="btn-social">
+            <img src="https://www.svgrepo.com/show/448224/facebook.svg" alt="Facebook" width="20" />
+            Continuar con Facebook
+          </button>
+        </div>
+
+        <!-- Link login -->
+        <p class="auth-switch">
+          ¿Ya tenés cuenta? <a href="login.html" class="form-link">Iniciá sesión aquí</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+          <p>Tu tienda de instrumentos musicales. Los mejores productos para músicos de todos los niveles.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+            <a href="#" class="social-link">yt</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#">Guitarras</a></li>
+            <li><a href="#">Teclados</a></li>
+            <li><a href="#">Baterías</a></li>
+            <li><a href="#">Micrófonos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">📍 Ushuaia, Tierra del Fuego</a></li>
+            <li><a href="#">📞 +54 2901 000-000</a></li>
+            <li><a href="#">✉️ info@ushuaiamusicstore.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Ushuaia MusicStore — Todos los derechos reservados</span>
+        <span>Desarrollado por Nicolas Cussi — Digital House</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================================================
+       JS — Validación del formulario
+  ================================================ -->
+  <script>
+    // Mostrar/ocultar contraseña
+    function togglePassword(id, btn) {
+      const input = document.getElementById(id);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁';
+      }
+    }
+
+    // Fortaleza de contraseña
+    function checkStrength(value) {
+      const fill = document.getElementById('strengthFill');
+      const label = document.getElementById('strengthLabel');
+      let strength = 0;
+      if (value.length >= 8) strength++;
+      if (/[A-Z]/.test(value)) strength++;
+      if (/[0-9]/.test(value)) strength++;
+      if (/[^A-Za-z0-9]/.test(value)) strength++;
+
+      const levels = [
+        { color: '#e63946', text: 'Muy débil', width: '25%' },
+        { color: '#f4a022', text: 'Débil',     width: '50%' },
+        { color: '#00c2b8', text: 'Buena',     width: '75%' },
+        { color: '#28a745', text: 'Fuerte',    width: '100%' },
+      ];
+
+      if (value.length === 0) {
+        fill.style.width = '0%';
+        label.textContent = '';
+        return;
+      }
+
+      const level = levels[strength - 1] || levels[0];
+      fill.style.width = level.width;
+      fill.style.backgroundColor = level.color;
+      label.textContent = level.text;
+      label.style.color = level.color;
+    }
+
+    // Validación del formulario
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const fields = [
+        { id: 'firstName',       errorId: 'firstNameError',       msg: 'El nombre es obligatorio.' },
+        { id: 'lastName',        errorId: 'lastNameError',        msg: 'El apellido es obligatorio.' },
+        { id: 'email',           errorId: 'emailError',           msg: 'El email es obligatorio.' },
+        { id: 'phone',           errorId: 'phoneError',           msg: 'El teléfono es obligatorio.' },
+        { id: 'birthdate',       errorId: 'birthdateError',       msg: 'La fecha de nacimiento es obligatoria.' },
+        { id: 'password',        errorId: 'passwordError',        msg: 'La contraseña es obligatoria.' },
+        { id: 'confirmPassword', errorId: 'confirmPasswordError', msg: 'Confirmá tu contraseña.' },
+      ];
+
+      // Limpiar errores previos
+      fields.forEach(f => {
+        document.getElementById(f.id).classList.remove('error');
+        document.getElementById(f.errorId).textContent = '';
+      });
+      document.getElementById('termsError').textContent = '';
+
+      // Validar campos vacíos
+      fields.forEach(f => {
+        const input = document.getElementById(f.id);
+        if (!input.value.trim()) {
+          input.classList.add('error');
+          document.getElementById(f.errorId).textContent = f.msg;
+          valid = false;
+        }
+      });
+
+      // Validar email
+      const emailInput = document.getElementById('email');
+      if (emailInput.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+        emailInput.classList.add('error');
+        document.getElementById('emailError').textContent = 'Ingresá un email válido.';
+        valid = false;
+      }
+
+      // Validar contraseñas iguales
+      const pass = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      if (pass && confirm && pass !== confirm) {
+        document.getElementById('confirmPassword').classList.add('error');
+        document.getElementById('confirmPasswordError').textContent = 'Las contraseñas no coinciden.';
+        valid = false;
+      }
+
+      // Validar términos
+      if (!document.getElementById('terms').checked) {
+        document.getElementById('termsError').textContent = 'Debés aceptar los términos y condiciones.';
+        valid = false;
+      }
+
+      // Resultado
+      if (!valid) {
+        document.getElementById('formError').style.display = 'block';
+        document.getElementById('formSuccess').style.display = 'none';
+      } else {
+        document.getElementById('formError').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
