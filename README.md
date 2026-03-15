@@ -149,8 +149,8 @@ DPFS_nicolas_cussi/
 | Sprint | Descripción | Estado |
 |--------|-------------|--------|
 | Sprint 1 | Planificación, wireframes y README | ✅ Completado |
-| Sprint 2 | Maquetado HTML/CSS | 🔄 En progreso |
-| Sprint 3 | React — componentes y rutas | ⏳ Pendiente |
+| Sprint 2 | Maquetado HTML/CSS | ✅ Completado |
+| Sprint 3 | React — componentes y rutas | 🔄 En proceso |
 | Sprint 4 | React — estado y carrito | ⏳ Pendiente |
 | Sprint 5 | Backend — Node.js y Express | ⏳ Pendiente |
 | Sprint 6 | Base de datos y API REST | ⏳ Pendiente |
