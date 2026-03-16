@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+
+
+  <!-- ================================================
+       BREADCRUMB
+  ================================================ -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Productos</span>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- ================================================
+       LISTADO DE PRODUCTOS
+  ================================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h1 class="section-title">Todos los <span>Productos</span></h1>
+        <a href="/products/create" class="btn btn-primary btn-sm">+ Agregar producto</a>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Producto 1 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/guitarra-01.png" alt="Guitarra Eléctrica Pro" class="product-card-img" />
+            <span class="badge badge-danger product-badge">-20%</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Guitarras</p>
+            <h3 class="product-card-name">Guitarra Eléctrica Pro</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(48)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">
+                $89.999
+                <span class="price-old">$112.000</span>
+              </div>
+              <a href="/products/1" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/teclado-01.png" alt="Teclado MIDI" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Teclados</p>
+            <h3 class="product-card-name">Teclado MIDI 61 Teclas</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="text-muted">(32)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$64.500</div>
+              <a href="/products/2" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/bateria-01.png" alt="Batería Acústica" class="product-card-img" />
+            <span class="badge badge-turquoise product-badge">Nuevo</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Baterías</p>
+            <h3 class="product-card-name">Batería Acústica 5 Piezas</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(17)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$145.000</div>
+              <a href="/products/3" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/microfono-01.png" alt="Micrófono Condensador" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Micrófonos</p>
+            <h3 class="product-card-name">Micrófono Condensador Pro</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="text-muted">(61)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$38.000</div>
+              <a href="/products/4" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/guitarra-02.png" alt="Guitarra Acústica Folk" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Guitarras</p>
+            <h3 class="product-card-name">Guitarra Acústica Folk</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(31)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$54.000</div>
+              <a href="/products/5" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/amplificador-01.jpg" alt="Amplificador 40W" class="product-card-img" />
+            <span class="badge badge-turquoise product-badge">Nuevo</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Accesorios</p>
+            <h3 class="product-card-name">Amplificador 40W</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="text-muted">(22)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$72.500</div>
+              <a href="/products/6" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 7 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/pedal-01.png" alt="Pedal de Efectos" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Accesorios</p>
+            <h3 class="product-card-name">Pedal de Efectos Multi-FX</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(15)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$38.000</div>
+              <a href="/products/7" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 8 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/teclado-02.png" alt="Teclado Arranger" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Teclados</p>
+            <h3 class="product-card-name">Teclado Arranger 76 Teclas</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(9)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$98.000</div>
+              <a href="/products/8" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('../partials/head') %>
+  <link rel="stylesheet" href="/styles/forms.css" />
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+
+
+  <!-- ================================================
+       BREADCRUMB
+  ================================================ -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/products">Productos</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/products/<%= id %>">Detalle</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Editar producto</span>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- ================================================
+       FORMULARIO EDITAR PRODUCTO
+  ================================================ -->
+  <section class="auth-section">
+    <div class="container">
+
+      <div class="auth-card">
+
+        <!-- Encabezado -->
+        <div class="auth-header">
+          <div class="auth-logo">✏️</div>
+          <h1 class="auth-title">Editar producto</h1>
+          <p class="auth-subtitle">Modificá los datos del producto y guardá los cambios</p>
+        </div>
+
+        <!-- Formulario -->
+        <!-- En Sprint 4: action="/products/<%= id %>?_method=PUT" -->
+        <form class="auth-form" action="/products" method="POST" id="editForm" novalidate>
+
+          <!-- Nombre -->
+          <div class="form-group">
+            <label class="form-label" for="name">Nombre del producto</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="Ej: Guitarra Eléctrica Pro"
+              value="Guitarra Eléctrica Pro"
+            />
+            <span class="form-error" id="nameError"></span>
+          </div>
+
+          <!-- Precio -->
+          <div class="form-group">
+            <label class="form-label" for="price">Precio ($)</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              class="form-input"
+              placeholder="Ej: 89999"
+              min="0"
+              value="89999"
+            />
+            <span class="form-error" id="priceError"></span>
+          </div>
+
+          <!-- Categoría -->
+          <div class="form-group">
+            <label class="form-label" for="category">Categoría</label>
+            <select id="category" name="category" class="form-input">
+              <option value="" disabled>Seleccioná una categoría</option>
+              <option value="guitarras" selected>Guitarras</option>
+              <option value="teclados">Teclados</option>
+              <option value="baterias">Baterías</option>
+              <option value="microfonos">Micrófonos</option>
+              <option value="vientos">Vientos</option>
+              <option value="accesorios">Accesorios</option>
+            </select>
+            <span class="form-error" id="categoryError"></span>
+          </div>
+
+          <!-- Descripción -->
+          <div class="form-group">
+            <label class="form-label" for="description">Descripción</label>
+            <textarea
+              id="description"
+              name="description"
+              class="form-input"
+              placeholder="Describí las características del producto..."
+              rows="4"
+            >La Guitarra Eléctrica Pro es el instrumento ideal para músicos que buscan calidad y versatilidad.</textarea>
+            <span class="form-error" id="descriptionError"></span>
+          </div>
+
+          <!-- Imagen -->
+          <div class="form-group">
+            <label class="form-label" for="image">Imagen (nombre del archivo)</label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              class="form-input"
+              placeholder="Ej: guitarra-001.png"
+              value="guitarra-001.png"
+            />
+            <span class="form-hint">El archivo debe estar en la carpeta public/images/products/</span>
+            <span class="form-error" id="imageError"></span>
+          </div>
+
+          <!-- Fila: Stock y Descuento -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="stock">Stock (unidades)</label>
+              <input
+                type="number"
+                id="stock"
+                name="stock"
+                class="form-input"
+                placeholder="Ej: 10"
+                min="0"
+                value="12"
+              />
+              <span class="form-error" id="stockError"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="discount">Descuento (%)</label>
+              <input
+                type="number"
+                id="discount"
+                name="discount"
+                class="form-input"
+                placeholder="Ej: 20"
+                min="0"
+                max="100"
+                value="20"
+              />
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="form-actions">
+            <a href="/products/<%= id %>" class="btn btn-secondary btn-lg">
+              Cancelar
+            </a>
+            <button type="submit" class="btn btn-primary btn-lg">
+              Guardar cambios
+            </button>
+          </div>
+
+          <!-- Mensaje de error general -->
+          <div class="form-alert error" id="formError" style="display:none;">
+            ⚠️ Por favor corregí los errores antes de continuar.
+          </div>
+
+          <!-- Mensaje de éxito -->
+          <div class="form-alert success" id="formSuccess" style="display:none;">
+            ✅ ¡Producto actualizado con éxito! Redirigiendo...
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+  <%- include('../partials/footer') %>
+
+
+  <!-- ================================================
+       JS — Validación básica
+  ================================================ -->
+  <script>
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+
+      let valid = true;
+
+      const fields = [
+        { id: 'name',        errorId: 'nameError',        msg: 'El nombre es obligatorio.' },
+        { id: 'price',       errorId: 'priceError',       msg: 'El precio es obligatorio.' },
+        { id: 'category',    errorId: 'categoryError',    msg: 'Seleccioná una categoría.' },
+        { id: 'description', errorId: 'descriptionError', msg: 'La descripción es obligatoria.' },
+        { id: 'image',       errorId: 'imageError',       msg: 'El nombre de imagen es obligatorio.' },
+      ];
+
+      // Limpiar errores previos
+      fields.forEach(f => {
+        document.getElementById(f.id).classList.remove('error');
+        document.getElementById(f.errorId).textContent = '';
+      });
+      document.getElementById('formError').style.display   = 'none';
+      document.getElementById('formSuccess').style.display = 'none';
+
+      // Validar campos vacíos
+      fields.forEach(f => {
+        const input = document.getElementById(f.id);
+        if (!input.value.trim()) {
+          input.classList.add('error');
+          document.getElementById(f.errorId).textContent = f.msg;
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        e.preventDefault();
+        document.getElementById('formError').style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
