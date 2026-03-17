@@ -73,33 +73,61 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 
 ## Funcionalidades principales del sitio
 
-El e-commerce contará con las siguientes funcionalidades principales:
-
 * Visualización de catálogo de productos
 * Página de detalle de cada instrumento
 * Registro e inicio de sesión de usuarios
 * Carrito de compras
-* Gestión de productos
+* Gestión de productos (crear, editar, eliminar)
 * Navegación por categorías
+* Autenticación con sesiones y contraseñas encriptadas
+* Panel de administración con estadísticas (Sprint 8)
 
 ---
 
-## Tecnologías a utilizar
-
-Durante el desarrollo del proyecto se utilizarán distintas tecnologías del ecosistema Full Stack:
+## Tecnologías utilizadas
 
 **Frontend**
-* HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
-* React
+* EJS (motor de templates)
+* React *(Sprint 8)*
 
 **Backend**
 * Node.js
 * Express
+* express-session *(Sprint 5)*
+* bcrypt *(Sprint 5)*
+* Multer *(Sprint 5)*
+* Express Validator *(Sprint 7)*
 
 **Base de datos**
-* MySQL
+* JSON *(Sprint 4)*
+* MySQL + Sequelize *(Sprint 6)*
+
+**Herramientas**
+* Git / GitHub
+* nodemon
+* GitHub Projects
+
+---
+
+## ▶️ Cómo correr el proyecto
+
+**Requisitos:** tener instalado Node.js
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Prof-NkoCussi/DPFS_nicolas_cussi.git
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Iniciar el servidor en modo desarrollo
+npm run dev
+```
+
+El servidor queda disponible en: `http://localhost:3000`
 
 ---
 
@@ -108,32 +136,62 @@ Durante el desarrollo del proyecto se utilizarán distintas tecnologías del eco
 ```
 DPFS_nicolas_cussi/
 │
-├── index.html                  ← Home
+├── app.js                          ← Servidor principal Express
+├── package.json
 │
-├── README.md
-├── retro.md
+├── public/                         ← Archivos estáticos (servidos por Express)
+│   ├── images/
+│   │   ├── banner/
+│   │   ├── categories/
+│   │   └── products/
+│   └── styles/
+│       ├── style.css
+│       ├── forms.css
+│       ├── productDetail.css
+│       └── productCart.css
 │
-├── Views/                      ← Páginas HTML
+├── src/
+│   ├── controllers/                ← Lógica de cada ruta
+│   │   ├── indexController.js
+│   │   ├── productsController.js
+│   │   └── usersController.js
+│   │
+│   ├── routes/                     ← Definición de rutas Express
+│   │   ├── index.js
+│   │   ├── products.js
+│   │   └── users.js
+│   │
+│   └── views/                      ← Templates EJS
+│       ├── index.ejs               ← Home
+│       ├── partials/
+│       │   ├── head.ejs
+│       │   ├── header.ejs
+│       │   └── footer.ejs
+│       ├── products/
+│       │   ├── list.ejs
+│       │   ├── detail.ejs
+│       │   ├── cart.ejs
+│       │   ├── create.ejs
+│       │   └── edit.ejs
+│       └── users/
+│           ├── register.ejs
+│           └── login.ejs
+│
+├── Views/                          ← Prototipos HTML estáticos (Sprint 2)
 │   ├── productDetail.html
 │   ├── productCart.html
 │   ├── register.html
 │   └── login.html
 │
-├── styles/
-│   └── style.css
+├── wireframes/                     ← Wireframes del proyecto (Sprint 1)
+│   ├── home.png
+│   ├── detalle_producto.png
+│   ├── carrito.png
+│   ├── form_registro.png
+│   └── login.png
 │
-├── images/
-│   ├── logo/
-│   ├── banner/
-│   ├── products/
-│   └── categories/
-│
-└── wireframes/
-    ├── wireframe_home.svg
-    ├── wireframe_detalle_producto.svg
-    ├── wireframe_carrito.svg
-    ├── wireframe_registro.svg
-    └── wireframe_login.svg
+├── README.md
+└── retro.md
 ```
 
 ---
@@ -149,13 +207,10 @@ DPFS_nicolas_cussi/
 | Sprint | Descripción | Estado |
 |--------|-------------|--------|
 | Sprint 1 | Planificación, wireframes y README | ✅ Completado |
-| Sprint 2 | Maquetado HTML/CSS | ✅ Completado |
-| Sprint 3 | React — componentes y rutas | 🔄 En proceso |
-| Sprint 4 | React — estado y carrito | ⏳ Pendiente |
-| Sprint 5 | Backend — Node.js y Express | ⏳ Pendiente |
-| Sprint 6 | Base de datos y API REST | ⏳ Pendiente |
-| Sprint 7 | Integración frontend-backend | ⏳ Pendiente |
-| Sprint 8 | Deploy y entrega final | ⏳ Pendiente |
-
----
-
+| Sprint 2 | Maquetado HTML y CSS | ✅ Completado |
+| Sprint 3 | Node.js + Express + EJS | ✅ Completado |
+| Sprint 4 | CRUD con archivos JSON | ⏳ Pendiente |
+| Sprint 5 | Usuarios y autenticación | ⏳ Pendiente |
+| Sprint 6 | Base de datos MySQL + Sequelize | ⏳ Pendiente |
+| Sprint 7 | Validaciones frontend y backend | ⏳ Pendiente |
+| Sprint 8 | API REST + Dashboard React | ⏳ Pendiente |
