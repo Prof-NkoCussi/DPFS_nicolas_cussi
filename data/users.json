@@ -4,7 +4,7 @@
     "firstName": "Nicolas",
     "lastName": "Cussi",
     "email": "nicolas@ushmusicstore.com",
-    "password": "admin1234",
+    "password": "$2b$10$ctUuFjA9G9nGC7s6CJovCuvq.Kgv6.//rl7nxPe8TqyzXenK/j/da",
     "category": "admin",
     "image": "user-01.png"
   },
@@ -13,7 +13,7 @@
     "firstName": "Ale",
     "lastName": "Cussi",
     "email": "ale.cussi@email.com",
-    "password": "pass1234",
+    "password": "$2b$10$6tBPoIXdeMDU7aDCs.cf8O2XINncVtEbPsWChlOzMzCKh4WlWUig.",
     "category": "user",
     "image": "user-default.png"
   },
@@ -22,7 +22,7 @@
     "firstName": "Mateo",
     "lastName": "Burri",
     "email": "mateo.burri@email.com",
-    "password": "pass1234",
+    "password": "$2b$10$MTkPcFJdqEPyOKnCiujUo.HB3OvoeJ6wt5E/89pVCpnY7XCEiliEq",
     "category": "user",
     "image": "user-default.png"
   },
@@ -31,7 +31,7 @@
     "firstName": "Sofía",
     "lastName": "Gómez",
     "email": "sofia.gomez@email.com",
-    "password": "pass1234",
+    "password": "$2b$10$g4Lr.IytHraj7Caq6qSVN.q0LffCZf4aQOtCoj1XkNYeEFjAAq.S2",
     "category": "user",
     "image": "user-default.png"
   },
@@ -40,7 +40,7 @@
     "firstName": "Diego",
     "lastName": "Martínez",
     "email": "diego.martinez@email.com",
-    "password": "pass1234",
+    "password": "$2b$10$IOx.HF1TVIzvF0vOMGMLE.HtZtzP/Y.OI56YAk0RDEUSA7JpJJeI.",
     "category": "user",
     "image": "user-default.png"
   }
