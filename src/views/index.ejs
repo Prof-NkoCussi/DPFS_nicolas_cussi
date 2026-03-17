@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+
+  <!-- ================================================
+       BANNER PRINCIPAL
+  ================================================ -->
+  <section class="banner">
+    <div class="container">
+      <div class="banner-content">
+        <span class="banner-tag">Oferta especial</span>
+        <h1 class="banner-title">Tu música<br><span>empieza aquí</span></h1>
+        <p class="banner-subtitle">Los mejores instrumentos al mejor precio. Envío gratis en compras mayores a $50.000.</p>
+        <div class="banner-actions">
+          <a href="#productos-destacados" class="btn btn-primary btn-lg">Ver productos</a>
+          <a href="#categorias" class="btn btn-secondary btn-lg">Ver categorías</a>
+        </div>
+      </div>
+      <div class="banner-image">
+        <img src="/images/banner/banner-home.jpg" alt="Banner Ushuaia MusicStore" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       PRODUCTOS DESTACADOS
+  ================================================ -->
+  <section class="section" id="productos-destacados">
+    <div class="container">
+
+      <div class="section-header">
+        <h2 class="section-title">Productos <span>Destacados</span></h2>
+        <a href="/products" class="btn btn-secondary btn-sm">Ver todos</a>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Card 1 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/guitarra-01.png" alt="Guitarra Eléctrica" class="product-card-img" />
+            <span class="badge badge-danger product-badge">-20%</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Guitarras</p>
+            <h3 class="product-card-name">Guitarra Eléctrica Pro</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(48)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">
+                $89.999
+                <span class="price-old">$112.000</span>
+              </div>
+              <a href="/products/1" class="btn btn-primary btn-sm">Agregar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/teclado-01.png" alt="Teclado MIDI" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Teclados</p>
+            <h3 class="product-card-name">Teclado MIDI 61 Teclas</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="text-muted">(32)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$64.500</div>
+              <a href="/products/2" class="btn btn-primary btn-sm">Agregar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/bateria-01.png" alt="Batería Acústica" class="product-card-img" />
+            <span class="badge badge-turquoise product-badge">Nuevo</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Baterías</p>
+            <h3 class="product-card-name">Batería Acústica 5 Piezas</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="text-muted">(17)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$145.000</div>
+              <a href="/products/3" class="btn btn-primary btn-sm">Agregar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="product-card">
+          <div class="product-card-img-wrapper">
+            <img src="/images/products/microfono-01.png" alt="Micrófono Condensador" class="product-card-img" />
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Micrófonos</p>
+            <h3 class="product-card-name">Micrófono Condensador Pro</h3>
+            <div class="product-card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="text-muted">(61)</span>
+            </div>
+            <div class="product-card-footer">
+              <div class="product-card-price">$38.000</div>
+              <a href="/products/4" class="btn btn-primary btn-sm">Agregar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       BANNER PROMO INTERMEDIO
+  ================================================ -->
+  <section class="banner-promo">
+    <div class="container">
+      <div class="banner-promo-content">
+        <h2>Envío gratis en toda la Argentina</h2>
+        <p>En compras superiores a $50.000 — Entrega en 3 a 5 días hábiles</p>
+      </div>
+      <a href="/products" class="btn btn-primary btn-lg">Ver promociones</a>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       CATEGORÍAS
+  ================================================ -->
+  <section class="section" id="categorias">
+    <div class="container">
+
+      <div class="section-header">
+        <h2 class="section-title">Nuestras <span>Categorías</span></h2>
+      </div>
+
+      <div class="categories-grid">
+
+        <a href="/products?category=guitarras" class="category-card">
+          <div class="category-img-wrapper">
+            <img src="/images/categories/cat-guitarras.jpg" alt="Guitarras" class="category-img"/>
+          </div>
+          <h3 class="category-name">Guitarras</h3>
+          <p class="category-count">+40 productos</p>
+        </a>
+
+        <a href="/products?category=teclados" class="category-card">
+          <div class="category-img-wrapper">
+            <img src="/images/categories/cat-teclados.png" alt="Teclados" class="category-img"/>
+          </div>
+          <h3 class="category-name">Teclados</h3>
+          <p class="category-count">+25 productos</p>
+        </a>
+
+        <a href="/products?category=baterias" class="category-card">
+          <div class="category-img-wrapper">
+            <img src="/images/categories/cat-baterias.jpg" alt="Baterías" class="category-img"/>
+          </div>
+          <h3 class="category-name">Baterías</h3>
+          <p class="category-count">+18 productos</p>
+        </a>
+
+        <a href="/products?category=microfonos" class="category-card">
+          <div class="category-img-wrapper">
+            <img src="/images/categories/cat-microfonos.jpg" alt="Micrófonos" class="category-img"/>
+          </div>
+          <h3 class="category-name">Micrófonos</h3>
+          <p class="category-count">+30 productos</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <%- include('partials/footer') %>
+
+</body>
+</html>

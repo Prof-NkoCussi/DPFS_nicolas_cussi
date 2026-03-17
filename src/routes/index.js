@@ -1,0 +1,12 @@
+// ============================================================
+//  USHUAIA MUSICSTORE — routes/index.js
+// ============================================================
+
+const express    = require('express');
+const router     = express.Router();
+const controller = require('../controllers/indexController');
+
+// GET / — Home
+router.get('/', controller.index);
+
+module.exports = router;

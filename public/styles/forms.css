@@ -319,3 +319,31 @@
     flex-direction: column;
   }
 }
+
+
+/* ── Hint de campo (texto de ayuda) ──────────────────────── */
+.form-hint {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+  margin-top: var(--space-xs);
+}
+
+
+/* ── Fila de botones del formulario ──────────────────────── */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}

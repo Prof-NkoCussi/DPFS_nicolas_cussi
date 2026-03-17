@@ -1,0 +1,41 @@
+<!-- PARTIAL: header.ejs -->
+
+<header class="navbar">
+  <div class="container">
+
+    <a href="/" class="navbar-brand">
+      <span class="brand-name">USHUAIA <span class="brand-accent">MUSIC</span>STORE</span>
+    </a>
+
+    <!-- Nav links -->
+    <nav class="navbar-nav">
+      <a href="/" class="nav-link">Inicio</a>
+
+      <!-- Dropdown Categorías -->
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link">Categorías ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="/products?category=guitarras">Guitarras</a>
+          <a href="/products?category=teclados">Teclados</a>
+          <a href="/products?category=baterias">Baterías</a>
+          <a href="/products?category=microfonos">Micrófonos</a>
+          <a href="/products?category=vientos">Vientos</a>
+          <a href="/products?category=accesorios">Accesorios</a>
+        </div>
+      </div>
+
+      <a href="/products" class="nav-link">Productos</a>
+      <a href="#" class="nav-link">Contacto</a>
+    </nav>
+
+    <!-- Acciones -->
+    <div class="navbar-actions">
+      <a href="/users/login" class="navbar-login">Iniciar sesión</a>
+      <span class="navbar-separator"></span>
+      <a href="/products/cart" class="navbar-cart">
+        🛒 Carrito <span class="cart-count">0</span>
+      </a>
+    </div>
+
+  </div>
+</header>
