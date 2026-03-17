@@ -19,7 +19,7 @@
         <span class="breadcrumb-sep">›</span>
         <a href="/products">Productos</a>
         <span class="breadcrumb-sep">›</span>
-        <span class="breadcrumb-current">Guitarra Eléctrica Pro</span>
+        <span class="breadcrumb-current"><%= product.name %></span>
       </nav>
     </div>
   </div>
@@ -38,27 +38,17 @@
           <!-- Imagen principal -->
           <div class="gallery-main">
             <img
-              src="/images/products/guitarra-001.png"
-              alt="Guitarra Eléctrica Pro"
+              src="/images/products/<%= product.image %>"
+              alt="<%= product.name %>"
               class="gallery-main-img"
               id="mainImage"
             />
-            <span class="badge badge-danger gallery-badge">-20%</span>
           </div>
 
-          <!-- Miniaturas -->
+          <!-- Miniatura única (en Sprint 6 se pueden agregar múltiples imágenes) -->
           <div class="gallery-thumbs">
-            <button class="thumb active" onclick="changeImage(this, '/images/products/guitarra-001.png')">
-              <img src="/images/products/guitarra-001.png" alt="Vista 1" />
-            </button>
-            <button class="thumb" onclick="changeImage(this, '/images/products/guitarra-002.png')">
-              <img src="/images/products/guitarra-002.png" alt="Vista 2" />
-            </button>
-            <button class="thumb" onclick="changeImage(this, '/images/products/guitarra-003.png')">
-              <img src="/images/products/guitarra-003.png" alt="Vista 3" />
-            </button>
-            <button class="thumb" onclick="changeImage(this, '/images/products/guitarra-004.png')">
-              <img src="/images/products/guitarra-004.png" alt="Vista 4" />
+            <button class="thumb active" onclick="changeImage(this, '/images/products/<%= product.image %>')">
+              <img src="/images/products/<%= product.image %>" alt="<%= product.name %>" />
             </button>
           </div>
 
@@ -68,44 +58,30 @@
         <div class="product-info">
 
           <!-- Categoría y nombre -->
-          <p class="product-info-category">Guitarras</p>
-          <h1 class="product-info-title">Guitarra Eléctrica Pro</h1>
-          <p class="product-info-sku text-muted">SKU: #00123 &nbsp;|&nbsp; Marca: Fender</p>
-
-          <!-- Rating -->
-          <div class="product-info-rating">
-            <span class="stars">★★★★☆</span>
-            <span class="text-muted">(48 reseñas)</span>
-          </div>
+          <p class="product-info-category"><%= product.category %></p>
+          <h1 class="product-info-title"><%= product.name %></h1>
+          <p class="product-info-sku text-muted">SKU: #<%= String(product.id).padStart(5, '0') %></p>
 
           <div class="product-info-divider"></div>
 
           <!-- Precio -->
           <div class="product-info-price">
-            <span class="price-current">$89.999</span>
-            <span class="price-old">$112.000</span>
-            <span class="badge badge-danger">-20% OFF</span>
+            <span class="price-current">$<%= product.price.toLocaleString('es-AR') %></span>
           </div>
 
-          <!-- Stock -->
-          <p class="product-info-stock">
-            <span class="stock-dot">●</span> En stock (12 unidades)
+          <!-- Colores -->
+          <% if (product.colors && product.colors.length > 0) { %>
+          <p class="product-info-colors text-muted">
+            Colores disponibles: <%= product.colors.join(', ') %>
           </p>
+          <% } %>
 
           <div class="product-info-divider"></div>
 
           <!-- Descripción -->
           <div class="product-info-desc">
             <h3>Descripción</h3>
-            <p>
-              La Guitarra Eléctrica Pro es el instrumento ideal para músicos que buscan calidad
-              y versatilidad. Con un cuerpo de aliso, mástil de arce y pastillas de alta ganancia,
-              ofrece un sonido potente y dinámico para cualquier estilo musical.
-            </p>
-            <p>
-              Su diseño ergonómico facilita la ejecución tanto en ensayos como en presentaciones
-              en vivo. Compatible con todo tipo de amplificadores y pedales de efectos.
-            </p>
+            <p><%= product.description %></p>
           </div>
 
           <div class="product-info-divider"></div>
@@ -122,13 +98,16 @@
 
           <!-- Botones de acción -->
           <div class="product-info-actions">
-            <a href="/products/cart" class="btn btn-primary btn-lg">
-              🛒 Agregar al carrito
-            </a>
-            <button class="btn btn-secondary">
-              ♡ Favoritos
-            </button>
+            <a href="/products/cart" class="btn btn-primary btn-lg">Agregar al carrito</a>
+            <a href="/products/<%= product.id %>/edit" class="btn btn-secondary">Editar</a>
           </div>
+
+          <!-- Eliminar producto -->
+          <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="margin-top: 1rem;">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este producto?')">
+              Eliminar producto
+            </button>
+          </form>
 
           <!-- Banner envío -->
           <div class="product-shipping">

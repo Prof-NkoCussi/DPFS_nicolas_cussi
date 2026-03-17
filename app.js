@@ -20,8 +20,9 @@
 // Inicia el servidor en el puerto 3000
 //app.listen(3000, ...);
 
-const express = require('express');
-const path    = require('path');
+const express        = require('express');
+const path           = require('path');
+const methodOverride = require('method-override');
 
 const app  = express();
 const PORT = 3000;
@@ -36,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ── Middlewares para formularios ─────────────────────────────
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// ── Method Override (permite PUT y DELETE desde formularios HTML)
+app.use(methodOverride('_method'));
 
 // ── Rutas ────────────────────────────────────────────────────
 const indexRouter    = require('./src/routes/index');

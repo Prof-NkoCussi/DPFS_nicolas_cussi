@@ -19,7 +19,7 @@
         <span class="breadcrumb-sep">›</span>
         <a href="/products">Productos</a>
         <span class="breadcrumb-sep">›</span>
-        <a href="/products/<%= id %>">Detalle</a>
+        <a href="/products/<%= product.id %>"><%= product.name %></a>
         <span class="breadcrumb-sep">›</span>
         <span class="breadcrumb-current">Editar producto</span>
       </nav>
@@ -43,8 +43,7 @@
         </div>
 
         <!-- Formulario -->
-        <!-- En Sprint 4: action="/products/<%= id %>?_method=PUT" -->
-        <form class="auth-form" action="/products" method="POST" id="editForm" novalidate>
+        <form class="auth-form" action="/products/<%= product.id %>?_method=PUT" method="POST" id="editForm" novalidate>
 
           <!-- Nombre -->
           <div class="form-group">
@@ -55,7 +54,7 @@
               name="name"
               class="form-input"
               placeholder="Ej: Guitarra Eléctrica Pro"
-              value="Guitarra Eléctrica Pro"
+              value="<%= product.name %>"
             />
             <span class="form-error" id="nameError"></span>
           </div>
@@ -70,7 +69,7 @@
               class="form-input"
               placeholder="Ej: 89999"
               min="0"
-              value="89999"
+              value="<%= product.price %>"
             />
             <span class="form-error" id="priceError"></span>
           </div>
@@ -80,12 +79,12 @@
             <label class="form-label" for="category">Categoría</label>
             <select id="category" name="category" class="form-input">
               <option value="" disabled>Seleccioná una categoría</option>
-              <option value="guitarras" selected>Guitarras</option>
-              <option value="teclados">Teclados</option>
-              <option value="baterias">Baterías</option>
-              <option value="microfonos">Micrófonos</option>
-              <option value="vientos">Vientos</option>
-              <option value="accesorios">Accesorios</option>
+              <option value="guitarras"  <%= product.category === 'guitarras'  ? 'selected' : '' %>>Guitarras</option>
+              <option value="teclados"   <%= product.category === 'teclados'   ? 'selected' : '' %>>Teclados</option>
+              <option value="baterias"   <%= product.category === 'baterias'   ? 'selected' : '' %>>Baterías</option>
+              <option value="microfonos" <%= product.category === 'microfonos' ? 'selected' : '' %>>Micrófonos</option>
+              <option value="vientos"    <%= product.category === 'vientos'    ? 'selected' : '' %>>Vientos</option>
+              <option value="accesorios" <%= product.category === 'accesorios' ? 'selected' : '' %>>Accesorios</option>
             </select>
             <span class="form-error" id="categoryError"></span>
           </div>
@@ -99,7 +98,7 @@
               class="form-input"
               placeholder="Describí las características del producto..."
               rows="4"
-            >La Guitarra Eléctrica Pro es el instrumento ideal para músicos que buscan calidad y versatilidad.</textarea>
+            ><%= product.description %></textarea>
             <span class="form-error" id="descriptionError"></span>
           </div>
 
@@ -112,45 +111,29 @@
               name="image"
               class="form-input"
               placeholder="Ej: guitarra-001.png"
-              value="guitarra-001.png"
+              value="<%= product.image %>"
             />
             <span class="form-hint">El archivo debe estar en la carpeta public/images/products/</span>
             <span class="form-error" id="imageError"></span>
           </div>
 
-          <!-- Fila: Stock y Descuento -->
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="stock">Stock (unidades)</label>
-              <input
-                type="number"
-                id="stock"
-                name="stock"
-                class="form-input"
-                placeholder="Ej: 10"
-                min="0"
-                value="12"
-              />
-              <span class="form-error" id="stockError"></span>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="discount">Descuento (%)</label>
-              <input
-                type="number"
-                id="discount"
-                name="discount"
-                class="form-input"
-                placeholder="Ej: 20"
-                min="0"
-                max="100"
-                value="20"
-              />
-            </div>
+          <!-- Colores -->
+          <div class="form-group">
+            <label class="form-label" for="colors">Colores disponibles</label>
+            <input
+              type="text"
+              id="colors"
+              name="colors"
+              class="form-input"
+              placeholder="Ej: negro, rojo, azul"
+              value="<%= product.colors ? product.colors.join(', ') : '' %>"
+            />
+            <span class="form-hint">Separalos con coma</span>
           </div>
 
           <!-- Botones -->
           <div class="form-actions">
-            <a href="/products/<%= id %>" class="btn btn-secondary btn-lg">
+            <a href="/products/<%= product.id %>" class="btn btn-secondary btn-lg">
               Cancelar
             </a>
             <button type="submit" class="btn btn-primary btn-lg">
