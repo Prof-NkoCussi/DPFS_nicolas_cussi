@@ -13,7 +13,7 @@
 //app.use(express.static(...));
 
 // Importa las rutas
-//app.use('/', indexRouter);
+//app.use('/', indexRouter); 
 //app.use('/products', productsRouter);
 //app.use('/users', usersRouter);
 
@@ -23,6 +23,8 @@
 const express        = require('express');
 const path           = require('path');
 const methodOverride = require('method-override');
+const session        = require('express-session');
+const flash          = require('connect-flash');
 
 const app  = express();
 const PORT = 3000;
@@ -40,6 +42,24 @@ app.use(express.json());
 
 // ── Method Override (permite PUT y DELETE desde formularios HTML)
 app.use(methodOverride('_method'));
+
+// ── Sesiones ─────────────────────────────────────────────────
+app.use(session({
+  secret: 'ushuaia-music-secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// ── Flash messages ───────────────────────────────────────────
+app.use(flash());
+
+// ── Variables globales para todas las vistas ─────────────────
+app.use((req, res, next) => {
+  res.locals.userLogged = req.session.userLogged || null;
+  res.locals.successMsg = req.flash('success');
+  res.locals.errorMsg   = req.flash('error');
+  next();
+});
 
 // ── Rutas ────────────────────────────────────────────────────
 const indexRouter    = require('./src/routes/index');
