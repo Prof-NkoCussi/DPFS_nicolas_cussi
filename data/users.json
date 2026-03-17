@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "firstName": "Nicolas",
+    "lastName": "Cussi",
+    "email": "nicolas@ushmusicstore.com",
+    "password": "admin1234",
+    "category": "admin",
+    "image": "user-01.png"
+  },
+  {
+    "id": 2,
+    "firstName": "Ale",
+    "lastName": "Cussi",
+    "email": "ale.cussi@email.com",
+    "password": "pass1234",
+    "category": "user",
+    "image": "user-default.png"
+  },
+  {
+    "id": 3,
+    "firstName": "Mateo",
+    "lastName": "Burri",
+    "email": "mateo.burri@email.com",
+    "password": "pass1234",
+    "category": "user",
+    "image": "user-default.png"
+  },
+  {
+    "id": 4,
+    "firstName": "Sofía",
+    "lastName": "Gómez",
+    "email": "sofia.gomez@email.com",
+    "password": "pass1234",
+    "category": "user",
+    "image": "user-default.png"
+  },
+  {
+    "id": 5,
+    "firstName": "Diego",
+    "lastName": "Martínez",
+    "email": "diego.martinez@email.com",
+    "password": "pass1234",
+    "category": "user",
+    "image": "user-default.png"
+  }
+]

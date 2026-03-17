@@ -1,0 +1,143 @@
+[
+  {
+    "id": 1,
+    "name": "Guitarra Eléctrica Stratocaster",
+    "description": "Guitarra eléctrica de cuerpo sólido con 3 micrófonos single-coil, mástil de arce y diapasón de palo de rosa. Ideal para rock, blues y pop.",
+    "image": "guitarra-001.png",
+    "category": "guitarras",
+    "colors": [
+      "sunburst",
+      "negro",
+      "blanco"
+    ],
+    "price": 85000
+  },
+  {
+    "id": 2,
+    "name": "Guitarra Acústica Dreadnought",
+    "description": "Guitarra acústica de tapa de abeto macizo y aros y fondo de caoba. Sonido cálido y proyección excelente, perfecta para principiantes y músicos intermedios.",
+    "image": "guitarra-002.png",
+    "category": "guitarras",
+    "colors": [
+      "natural",
+      "sunburst"
+    ],
+    "price": 45000
+  },
+  {
+    "id": 3,
+    "name": "Guitarra Eléctrica Les Paul",
+    "description": "Guitarra eléctrica de cuerpo macizo con 2 micrófonos humbucker. Sonido potente y sustain largo, ideal para rock y metal.",
+    "image": "guitarra-003.png",
+    "category": "guitarras",
+    "colors": [
+      "cherry sunburst",
+      "negro",
+      "gold top"
+    ],
+    "price": 95000
+  },
+  {
+    "id": 4,
+    "name": "Teclado MIDI 61 Teclas",
+    "description": "Controlador MIDI con 61 teclas semipesadas, 8 pads de batería, ruedas de pitch y modulación. Compatible con todos los DAWs del mercado.",
+    "image": "teclado-01.png",
+    "category": "teclados",
+    "colors": [
+      "blanco"
+    ],
+    "price": 60000
+  },
+  {
+    "id": 5,
+    "name": "Piano Digital 88 Teclas",
+    "description": "Piano digital con 88 teclas contrapesadas, acción de martillo graduado y 256 voces de polifonía. Incluye banco de 30 sonidos y bluetooth.",
+    "image": "teclado-02.png",
+    "category": "teclados",
+    "colors": [
+      "negro",
+      "blanco"
+    ],
+    "price": 180000
+  },
+  {
+    "id": 6,
+    "name": "Batería Acústica 5 Piezas",
+    "description": "Batería acústica completa con bombo de 22\", caja de 14\", 3 toms y platos hi-hat, crash y ride incluidos. Ideal para ensayos y presentaciones.",
+    "image": "bateria-01.png",
+    "category": "baterias",
+    "colors": [
+      "negro",
+      "rojo",
+      "azul"
+    ],
+    "price": 220000
+  },
+  {
+    "id": 7,
+    "name": "Batería Electrónica 9 Pads",
+    "description": "Batería electrónica con 9 pads de malla, módulo con 25 kits pregrabados y salida de auriculares. Perfecta para practicar sin hacer ruido.",
+    "image": "bateria-02.jpg",
+    "category": "baterias",
+    "colors": [
+      "negro"
+    ],
+    "price": 150000
+  },
+  {
+    "id": 8,
+    "name": "Micrófono Dinámico Cardioide",
+    "description": "Micrófono dinámico con patrón cardioide, respuesta de frecuencia de 50Hz a 15kHz. Ideal para voces en vivo y amplificadores de guitarra.",
+    "image": "microfono-01.png",
+    "category": "microfonos",
+    "colors": [
+      "negro"
+    ],
+    "price": 18000
+  },
+  {
+    "id": 9,
+    "name": "Micrófono de Condensador Cardioide",
+    "description": "Micrófono de condensador de diafragma grande con patrón cardioide. Ideal para grabación en estudio de voces, guitarra acústica y piano.",
+    "image": "microfono-02.jpg",
+    "category": "microfonos",
+    "colors": [
+      "plata",
+      "negro"
+    ],
+    "price": 42000
+  },
+  {
+    "id": 10,
+    "name": "Amplificador de Guitarra 40W",
+    "description": "Amplificador combo de 40 watts con parlante de 12\", canal limpio y canal de overdrive, reverb incorporado y efectos de chorus y delay.",
+    "image": "amplificador-01.jpg",
+    "category": "accesorios",
+    "colors": [
+      "negro"
+    ],
+    "price": 75000
+  },
+  {
+    "id": 11,
+    "name": "Pedal de Efectos Multiefecto",
+    "description": "Procesador multiefecto con más de 100 efectos integrados, afinador cromático, looper de 60 segundos y conexión USB para actualizaciones.",
+    "image": "pedal-01.png",
+    "category": "accesorios",
+    "colors": [
+      "negro"
+    ],
+    "price": 55000
+  },
+  {
+    "id": 12,
+    "name": "Set de Cuerdas para Guitarra Eléctrica",
+    "description": "Set de 6 cuerdas de acero niquelado calibre 009-042. Alta durabilidad y respuesta tonal equilibrada. Pack de 3 sets.",
+    "image": "cuerdas-01.jpg",
+    "category": "accesorios",
+    "colors": [
+      "plateado"
+    ],
+    "price": 3500
+  }
+]
