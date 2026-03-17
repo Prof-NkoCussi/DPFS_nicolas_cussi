@@ -19,7 +19,6 @@
           <a href="/products?category=teclados">Teclados</a>
           <a href="/products?category=baterias">Baterías</a>
           <a href="/products?category=microfonos">Micrófonos</a>
-          <a href="/products?category=vientos">Vientos</a>
           <a href="/products?category=accesorios">Accesorios</a>
         </div>
       </div>
@@ -30,11 +29,33 @@
 
     <!-- Acciones -->
     <div class="navbar-actions">
-      <a href="/users/login" class="navbar-login">Iniciar sesión</a>
+
+      <% if (userLogged) { %>
+        <!-- Usuario logueado -->
+        <div class="nav-dropdown">
+          <a href="#" class="navbar-login">
+            <img src="/images/users/<%= userLogged.image %>" alt="<%= userLogged.firstName %>" class="navbar-avatar" onerror="this.src='/images/users/user-default.png'" />
+            <%= userLogged.firstName %>  ▾
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="/users/profile">Mi perfil</a>
+            <% if (userLogged.category === 'admin') { %>
+              <a href="/products/create">Agregar producto</a>
+            <% } %>
+            <a href="/users/logout">Cerrar sesión</a>
+          </div>
+        </div>
+      <% } else { %>
+        <!-- Sin sesión -->
+        <a href="/users/login" class="navbar-login">Iniciar sesión</a>
+        <a href="/users/register" class="btn btn-primary btn-sm">Registrarse</a>
+      <% } %>
+
       <span class="navbar-separator"></span>
       <a href="/products/cart" class="navbar-cart">
         🛒 Carrito <span class="cart-count">0</span>
       </a>
+
     </div>
 
   </div>

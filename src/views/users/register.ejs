@@ -23,8 +23,16 @@
           <p class="auth-subtitle">Completá tus datos para registrarte en Ushuaia MusicStore</p>
         </div>
 
+        <!-- Mensajes flash del servidor -->
+        <% if (errorMsg && errorMsg.length > 0) { %>
+          <div class="form-alert error"><%= errorMsg[0] %></div>
+        <% } %>
+        <% if (successMsg && successMsg.length > 0) { %>
+          <div class="form-alert success"><%= successMsg[0] %></div>
+        <% } %>
+
         <!-- Formulario -->
-        <form class="auth-form" action="/users/register" method="POST" id="registerForm" novalidate>
+        <form class="auth-form" action="/users/register" method="POST" enctype="multipart/form-data" id="registerForm" novalidate>
 
           <!-- Fila: Nombre y Apellido -->
           <div class="form-row">
@@ -141,6 +149,19 @@
             <span class="form-error" id="confirmPasswordError"></span>
           </div>
 
+          <!-- Foto de perfil -->
+          <div class="form-group">
+            <label class="form-label" for="image">Foto de perfil (opcional)</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              class="form-input"
+              accept=".jpg,.jpeg,.png,.gif"
+            />
+            <span class="form-hint">JPG, JPEG, PNG o GIF. Si no subís una, se usará la imagen por defecto.</span>
+          </div>
+
           <!-- Checkboxes -->
           <div class="form-checks">
             <label class="form-check">
@@ -244,7 +265,6 @@
     }
 
     document.getElementById('registerForm').addEventListener('submit', function(e) {
-      e.preventDefault();
       let valid = true;
 
       const fields = [
@@ -295,10 +315,8 @@
       }
 
       if (!valid) {
+        e.preventDefault();
         document.getElementById('formError').style.display = 'block';
-      } else {
-        document.getElementById('formSuccess').style.display = 'block';
-        // En Sprint 5 aquí se hace el submit real al servidor
       }
     });
   </script>

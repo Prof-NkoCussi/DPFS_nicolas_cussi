@@ -24,6 +24,14 @@
           <p class="auth-subtitle">Ingresá con tu cuenta de Ushuaia MusicStore</p>
         </div>
 
+        <!-- Mensajes flash del servidor -->
+        <% if (errorMsg && errorMsg.length > 0) { %>
+          <div class="form-alert error"><%= errorMsg[0] %></div>
+        <% } %>
+        <% if (successMsg && successMsg.length > 0) { %>
+          <div class="form-alert success"><%= successMsg[0] %></div>
+        <% } %>
+
         <!-- Formulario -->
         <form class="auth-form" action="/users/login" method="POST" id="loginForm" novalidate>
 
@@ -169,7 +177,6 @@
     }
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
       let valid = true;
 
       ['email', 'password'].forEach(id => {
@@ -177,8 +184,6 @@
       });
       document.getElementById('emailError').textContent    = '';
       document.getElementById('passwordError').textContent = '';
-      document.getElementById('loginError').style.display   = 'none';
-      document.getElementById('loginSuccess').style.display = 'none';
 
       const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
@@ -199,20 +204,7 @@
         valid = false;
       }
 
-      if (!valid) return;
-
-      // Simulación — en Sprint 5 se reemplaza por autenticación real con bcrypt
-      const validEmail = 'test@musicstore.com';
-      const validPass  = 'Music123!';
-
-      if (email === validEmail && password === validPass) {
-        document.getElementById('loginSuccess').style.display = 'block';
-        setTimeout(() => { window.location.href = '/'; }, 2000);
-      } else {
-        document.getElementById('loginError').style.display = 'block';
-        document.getElementById('email').classList.add('error');
-        document.getElementById('password').classList.add('error');
-      }
+      if (!valid) e.preventDefault();
     });
   </script>
 
