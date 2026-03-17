@@ -96,6 +96,7 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 **Backend**
 * Node.js
 * Express
+* method-override *(PUT y DELETE desde formularios HTML)*
 * express-session *(Sprint 5)*
 * bcrypt *(Sprint 5)*
 * Multer *(Sprint 5)*
@@ -138,6 +139,10 @@ DPFS_nicolas_cussi/
 │
 ├── app.js                          ← Servidor principal Express
 ├── package.json
+│
+├── data/                           ← Fuente de datos JSON (Sprint 4)
+│   ├── products.json               ← 12 productos del catálogo
+│   └── users.json                  ← Usuarios del sistema
 │
 ├── public/                         ← Archivos estáticos (servidos por Express)
 │   ├── images/
@@ -209,7 +214,7 @@ DPFS_nicolas_cussi/
 | Sprint 1 | Planificación, wireframes y README | ✅ Completado |
 | Sprint 2 | Maquetado HTML y CSS | ✅ Completado |
 | Sprint 3 | Node.js + Express + EJS | ✅ Completado |
-| Sprint 4 | CRUD con archivos JSON | ⏳ Pendiente |
+| Sprint 4 | CRUD con archivos JSON | ✅ Completado |
 | Sprint 5 | Usuarios y autenticación | ⏳ Pendiente |
 | Sprint 6 | Base de datos MySQL + Sequelize | ⏳ Pendiente |
 | Sprint 7 | Validaciones frontend y backend | ⏳ Pendiente |

@@ -133,6 +133,121 @@ importante de la estructura de carpetas.
 
 ---
 
-*Fecha de retrospectiva: Sprint 2 finalizado*  
+*Fecha de retrospectiva: Sprint 2 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
-```
+
+---
+
+# 🌟 Retrospectiva — Sprint 3
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 3 — Node.js + Express + EJS
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Corregir bugs detectados antes de avanzar al siguiente sprint, para no arrastrar problemas acumulados.
+- Verificar el orden de las rutas en Express desde el inicio — las rutas específicas siempre antes que las parametrizadas (`/create` antes de `/:id`).
+- Crear el `.gitignore` al inicio de cada proyecto con Node.js, antes del primer `npm install`.
+
+---
+
+## 🔼 Hacer más
+
+- Probar cada ruta en el navegador a medida que se crea, no esperar a tener todo listo para probar.
+- Usar `<%= title %>` en los partials desde el principio para que cada vista tenga su propio título.
+- Commitear por funcionalidad terminada, no acumular muchos cambios en un solo commit.
+
+---
+
+## ✅ Continuar haciendo
+
+- Mantener la separación en carpetas `routes/`, `controllers/` y `views/` — hace el código mucho más ordenado y fácil de escalar.
+- Usar partials de EJS para header, footer y head — evita la repetición de código y centraliza los cambios.
+- Basarse en los HTMLs del Sprint 2 para convertir las vistas a EJS — reutilizar lo ya hecho ahorra tiempo.
+
+---
+
+## 🔽 Hacer menos
+
+- Acumular cambios sin commitear — dificulta entender qué se cambió y por qué.
+- Hardcodear valores en los partials (como el título) que deberían ser dinámicos.
+
+---
+
+## ❌ Dejar de hacer
+
+- Subir archivos a staging sin verificar qué se está incluyendo — revisar siempre con `git status` antes de commitear.
+- Avanzar con nuevas vistas sin haber probado que el servidor levanta correctamente.
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 3 fue el más técnico hasta ahora. Se migró todo el sitio a Node.js + Express + EJS, se reorganizó la estructura de carpetas siguiendo buenas prácticas, y se completaron todas las vistas dinámicas. El mayor desafío fue entender cómo funciona el flujo entre rutas, controllers y vistas en Express.
+
+De cara al Sprint 4, el foco estará en conectar las vistas con datos reales provenientes de archivos JSON, implementando el CRUD completo de productos.
+
+---
+
+*Fecha de retrospectiva: Sprint 3 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*
+
+---
+
+# 🌟 Retrospectiva — Sprint 4
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 4 — CRUD con JSON
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Probar cada acción del CRUD inmediatamente después de implementarla, sin esperar a tener todo listo.
+- Verificar el archivo JSON después de cada operación (crear, editar, eliminar) para confirmar que los datos se guardan correctamente.
+- Planificar la estructura de datos desde el principio — los campos definidos en el JSON van a impactar directamente en Sprint 6 (base de datos).
+
+---
+
+## 🔼 Hacer más
+
+- Usar `console.log` durante el desarrollo para inspeccionar los datos que llegan por `req.body` antes de guardarlos.
+- Revisar el orden de las rutas en Express cada vez que se agregan nuevas — `/create` y `/cart` siempre antes de `/:id`.
+
+---
+
+## ✅ Continuar haciendo
+
+- Separar la lógica de lectura y escritura del JSON en funciones auxiliares (`getProducts`, `saveProducts`) — hace el código más limpio y reutilizable.
+- Mantener el archivo JSON con datos realistas del negocio — facilita detectar problemas visuales mientras se desarrolla.
+- Usar `method-override` para soportar PUT y DELETE desde formularios HTML — es la solución estándar en proyectos Express.
+
+---
+
+## 🔽 Hacer menos
+
+- Hardcodear datos en las vistas EJS — todo valor que pueda cambiar debe venir del controller.
+- Mezclar lógica de negocio dentro de las rutas — esa lógica va en los controllers.
+
+---
+
+## ❌ Dejar de hacer
+
+- Avanzar al siguiente sprint sin probar el flujo completo (crear → editar → eliminar → verificar en JSON).
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 4 fue el primero donde el sitio cobró vida real. Se implementó el CRUD completo de productos usando archivos JSON como fuente de datos, con las 7 rutas requeridas funcionando correctamente. El mayor aprendizaje fue entender el flujo completo: formulario → controller → JSON → redirección.
+
+De cara al Sprint 5, el foco estará en los usuarios: registro con imagen (Multer), login con contraseña encriptada (bcrypt) y rutas protegidas con sesiones.
+
+---
+
+*Fecha de retrospectiva: Sprint 4 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*
