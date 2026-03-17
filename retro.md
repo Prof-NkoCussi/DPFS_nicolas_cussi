@@ -251,3 +251,61 @@ De cara al Sprint 5, el foco estará en los usuarios: registro con imagen (Multe
 
 *Fecha de retrospectiva: Sprint 4 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
+
+---
+
+# 🌟 Retrospectiva — Sprint 5
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 5 — Usuarios, Autenticación y Middlewares
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Encriptar las contraseñas existentes antes de implementar bcrypt — los datos de prueba deben estar en el mismo formato que los datos reales.
+- Planificar la estructura de carpetas de middlewares desde el inicio — separar `multerConfig.js` y `auth.js` en `src/middlewares/` facilita la reutilización.
+- Agregar `onerror` en imágenes de usuario desde el primer momento para evitar broken images.
+
+---
+
+## 🔼 Hacer más
+
+- Probar el flujo completo de autenticación (registro → login → perfil → logout) antes de avanzar.
+- Verificar que los formularios no tengan `e.preventDefault()` bloqueando el envío al servidor.
+- Revisar que los `name` de los inputs coincidan exactamente con lo que espera el controller.
+
+---
+
+## ✅ Continuar haciendo
+
+- Separar la lógica en archivos específicos — controller, middlewares, rutas — hace el código más fácil de mantener y entender.
+- Usar `res.locals` para variables globales como `userLogged` — disponible en todas las vistas sin pasarla manualmente.
+- Usar `connect-flash` para mensajes entre redirecciones — da feedback claro al usuario sin JavaScript extra.
+
+---
+
+## 🔽 Hacer menos
+
+- Guardar información sensible en la sesión — la contraseña nunca va en `req.session.userLogged`.
+- Hardcodear validaciones en el frontend sin tener el backend como respaldo — el frontend puede deshabilitarse.
+
+---
+
+## ❌ Dejar de hacer
+
+- Avanzar sin probar las rutas protegidas — verificar siempre que `isGuest`, `isUser` e `isAdmin` redirigen correctamente.
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 5 fue el más complejo hasta ahora. Se implementó el flujo completo de autenticación: registro con imagen (Multer) y contraseña encriptada (bcrypt), login con sesiones (express-session), mensajes flash (connect-flash) y rutas protegidas con middlewares. El mayor aprendizaje fue entender cómo fluye la información entre middlewares, controllers y vistas a través de `req.session` y `res.locals`.
+
+De cara al Sprint 6, el foco estará en migrar toda la lógica de JSON a MySQL con Sequelize — el mayor cambio técnico del proyecto.
+
+---
+
+*Fecha de retrospectiva: Sprint 5 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*

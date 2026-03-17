@@ -97,9 +97,10 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 * Node.js
 * Express
 * method-override *(PUT y DELETE desde formularios HTML)*
-* express-session *(Sprint 5)*
-* bcrypt *(Sprint 5)*
-* Multer *(Sprint 5)*
+* express-session
+* bcrypt
+* Multer
+* connect-flash
 * Express Validator *(Sprint 7)*
 
 **Base de datos**
@@ -137,37 +138,45 @@ El servidor queda disponible en: `http://localhost:3000`
 ```
 DPFS_nicolas_cussi/
 │
-├── app.js                          ← Servidor principal Express
-├── package.json
+├── app.js                          
+├── package.json                    
 │
-├── data/                           ← Fuente de datos JSON (Sprint 4)
-│   ├── products.json               ← 12 productos del catálogo
-│   └── users.json                  ← Usuarios del sistema
+├── data/                           
+│   ├── products.json
+│   └── users.json
 │
-├── public/                         ← Archivos estáticos (servidos por Express)
+├── public/                         
 │   ├── images/
 │   │   ├── banner/
 │   │   ├── categories/
-│   │   └── products/
+│   │   ├── products/
+│   │   └── users/                  
 │   └── styles/
 │       ├── style.css
 │       ├── forms.css
 │       ├── productDetail.css
 │       └── productCart.css
 │
-├── src/
-│   ├── controllers/                ← Lógica de cada ruta
+├── scripts/                        
+│   └── hashPasswords.js
+│
+├── src/                            
+│   ├── controllers/
 │   │   ├── indexController.js
 │   │   ├── productsController.js
 │   │   └── usersController.js
 │   │
-│   ├── routes/                     ← Definición de rutas Express
+│   ├── middlewares/                
+│   │   ├── auth.js
+│   │   └── multerConfig.js
+│   │
+│   ├── routes/
 │   │   ├── index.js
 │   │   ├── products.js
 │   │   └── users.js
 │   │
-│   └── views/                      ← Templates EJS
-│       ├── index.ejs               ← Home
+│   └── views/
+│       ├── index.ejs
 │       ├── partials/
 │       │   ├── head.ejs
 │       │   ├── header.ejs
@@ -176,19 +185,20 @@ DPFS_nicolas_cussi/
 │       │   ├── list.ejs
 │       │   ├── detail.ejs
 │       │   ├── cart.ejs
-│       │   ├── create.ejs
-│       │   └── edit.ejs
+│       │   ├── create.ejs          
+│       │   └── edit.ejs            
 │       └── users/
 │           ├── register.ejs
-│           └── login.ejs
+│           ├── login.ejs
+│           └── profile.ejs         
 │
-├── Views/                          ← Prototipos HTML estáticos (Sprint 2)
+├── Views/                          
 │   ├── productDetail.html
 │   ├── productCart.html
 │   ├── register.html
 │   └── login.html
 │
-├── wireframes/                     ← Wireframes del proyecto (Sprint 1)
+├── wireframes/                     
 │   ├── home.png
 │   ├── detalle_producto.png
 │   ├── carrito.png
@@ -215,7 +225,7 @@ DPFS_nicolas_cussi/
 | Sprint 2 | Maquetado HTML y CSS | ✅ Completado |
 | Sprint 3 | Node.js + Express + EJS | ✅ Completado |
 | Sprint 4 | CRUD con archivos JSON | ✅ Completado |
-| Sprint 5 | Usuarios y autenticación | ⏳ Pendiente |
+| Sprint 5 | Usuarios y autenticación | ✅ Completado |
 | Sprint 6 | Base de datos MySQL + Sequelize | ⏳ Pendiente |
 | Sprint 7 | Validaciones frontend y backend | ⏳ Pendiente |
 | Sprint 8 | API REST + Dashboard React | ⏳ Pendiente |
