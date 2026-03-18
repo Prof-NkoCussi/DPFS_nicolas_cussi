@@ -294,6 +294,23 @@
         }
       });
 
+      // Nombre mínimo 2 caracteres
+      const firstNameInput = document.getElementById('firstName');
+      if (firstNameInput.value.trim() && firstNameInput.value.trim().length < 2) {
+        firstNameInput.classList.add('error');
+        document.getElementById('firstNameError').textContent = 'El nombre debe tener al menos 2 caracteres.';
+        valid = false;
+      }
+
+      // Apellido mínimo 2 caracteres
+      const lastNameInput = document.getElementById('lastName');
+      if (lastNameInput.value.trim() && lastNameInput.value.trim().length < 2) {
+        lastNameInput.classList.add('error');
+        document.getElementById('lastNameError').textContent = 'El apellido debe tener al menos 2 caracteres.';
+        valid = false;
+      }
+
+      // Email formato válido
       const emailInput = document.getElementById('email');
       if (emailInput.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
         emailInput.classList.add('error');
@@ -301,7 +318,16 @@
         valid = false;
       }
 
-      const pass    = document.getElementById('password').value;
+      // Contraseña mínimo 8 caracteres
+      const passInput = document.getElementById('password');
+      if (passInput.value && passInput.value.length < 8) {
+        passInput.classList.add('error');
+        document.getElementById('passwordError').textContent = 'La contraseña debe tener al menos 8 caracteres.';
+        valid = false;
+      }
+
+      // Confirmar contraseña coincide
+      const pass    = passInput.value;
       const confirm = document.getElementById('confirmPassword').value;
       if (pass && confirm && pass !== confirm) {
         document.getElementById('confirmPassword').classList.add('error');
@@ -309,6 +335,19 @@
         valid = false;
       }
 
+      // Imagen formato válido
+      const imageInput = document.getElementById('image');
+      if (imageInput.files && imageInput.files[0]) {
+        const fileName = imageInput.files[0].name.toLowerCase();
+        if (!/\.(jpg|jpeg|png|gif)$/.test(fileName)) {
+          imageInput.classList.add('error');
+          valid = false;
+          document.getElementById('formError').style.display = 'block';
+          document.getElementById('formError').textContent = '⚠️ La imagen debe ser JPG, JPEG, PNG o GIF.';
+        }
+      }
+
+      // Términos y condiciones
       if (!document.getElementById('terms').checked) {
         document.getElementById('termsError').textContent = 'Debés aceptar los términos y condiciones.';
         valid = false;

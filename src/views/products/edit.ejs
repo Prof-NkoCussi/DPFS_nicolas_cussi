@@ -42,6 +42,15 @@
           <p class="auth-subtitle">Modificá los datos del producto y guardá los cambios</p>
         </div>
 
+        <!-- Flash messages backend -->
+        <% if (errorMsg && errorMsg.length > 0) { %>
+          <div class="form-alert error">
+            <% errorMsg.forEach(msg => { %>
+              <p>⚠️ <%= msg %></p>
+            <% }) %>
+          </div>
+        <% } %>
+
         <!-- Formulario -->
         <form class="auth-form" action="/products/<%= product.id %>?_method=PUT" method="POST" id="editForm" novalidate>
 
@@ -76,14 +85,14 @@
 
           <!-- Categoría -->
           <div class="form-group">
-            <label class="form-label" for="category">Categoría</label>
-            <select id="category" name="category" class="form-input">
+            <label class="form-label" for="category_id">Categoría</label>
+            <select id="category_id" name="category_id" class="form-input">
               <option value="" disabled>Seleccioná una categoría</option>
-              <option value="guitarras"  <%= product.category === 'guitarras'  ? 'selected' : '' %>>Guitarras</option>
-              <option value="teclados"   <%= product.category === 'teclados'   ? 'selected' : '' %>>Teclados</option>
-              <option value="baterias"   <%= product.category === 'baterias'   ? 'selected' : '' %>>Baterías</option>
-              <option value="microfonos"  <%= product.category === 'microfonos'  ? 'selected' : '' %>>Micrófonos</option>
-              <option value="accesorios" <%= product.category === 'accesorios' ? 'selected' : '' %>>Accesorios</option>
+              <% categories.forEach(cat => { %>
+                <option value="<%= cat.id %>" <%= product.category_id === cat.id ? 'selected' : '' %>>
+                  <%= cat.name.charAt(0).toUpperCase() + cat.name.slice(1) %>
+                </option>
+              <% }) %>
             </select>
             <span class="form-error" id="categoryError"></span>
           </div>
@@ -168,31 +177,61 @@
 
       let valid = true;
 
-      const fields = [
-        { id: 'name',        errorId: 'nameError',        msg: 'El nombre es obligatorio.' },
-        { id: 'price',       errorId: 'priceError',       msg: 'El precio es obligatorio.' },
-        { id: 'category',    errorId: 'categoryError',    msg: 'Seleccioná una categoría.' },
-        { id: 'description', errorId: 'descriptionError', msg: 'La descripción es obligatoria.' },
-        { id: 'image',       errorId: 'imageError',       msg: 'El nombre de imagen es obligatorio.' },
-      ];
-
       // Limpiar errores previos
-      fields.forEach(f => {
-        document.getElementById(f.id).classList.remove('error');
-        document.getElementById(f.errorId).textContent = '';
+      ['name', 'price', 'category_id', 'description'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('error');
+      });
+      ['nameError', 'priceError', 'categoryError', 'descriptionError'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '';
       });
       document.getElementById('formError').style.display   = 'none';
       document.getElementById('formSuccess').style.display = 'none';
 
-      // Validar campos vacíos
-      fields.forEach(f => {
-        const input = document.getElementById(f.id);
-        if (!input.value.trim()) {
-          input.classList.add('error');
-          document.getElementById(f.errorId).textContent = f.msg;
-          valid = false;
-        }
-      });
+      // Nombre — obligatorio y mínimo 5 caracteres
+      const name = document.getElementById('name');
+      if (!name.value.trim()) {
+        name.classList.add('error');
+        document.getElementById('nameError').textContent = 'El nombre es obligatorio.';
+        valid = false;
+      } else if (name.value.trim().length < 5) {
+        name.classList.add('error');
+        document.getElementById('nameError').textContent = 'El nombre debe tener al menos 5 caracteres.';
+        valid = false;
+      }
+
+      // Precio — obligatorio y mayor a 0
+      const price = document.getElementById('price');
+      if (!price.value) {
+        price.classList.add('error');
+        document.getElementById('priceError').textContent = 'El precio es obligatorio.';
+        valid = false;
+      } else if (parseFloat(price.value) <= 0) {
+        price.classList.add('error');
+        document.getElementById('priceError').textContent = 'El precio debe ser mayor a 0.';
+        valid = false;
+      }
+
+      // Categoría — obligatoria
+      const category = document.getElementById('category_id');
+      if (!category.value) {
+        category.classList.add('error');
+        document.getElementById('categoryError').textContent = 'Seleccioná una categoría.';
+        valid = false;
+      }
+
+      // Descripción — obligatoria y mínimo 20 caracteres
+      const desc = document.getElementById('description');
+      if (!desc.value.trim()) {
+        desc.classList.add('error');
+        document.getElementById('descriptionError').textContent = 'La descripción es obligatoria.';
+        valid = false;
+      } else if (desc.value.trim().length < 20) {
+        desc.classList.add('error');
+        document.getElementById('descriptionError').textContent = 'La descripción debe tener al menos 20 caracteres.';
+        valid = false;
+      }
 
       if (!valid) {
         e.preventDefault();
