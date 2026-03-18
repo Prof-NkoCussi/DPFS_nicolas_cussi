@@ -91,7 +91,7 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 * CSS3
 * JavaScript
 * EJS (motor de templates)
-* React *(Sprint 8)*
+* React 
 
 **Backend**
 * Node.js
@@ -101,11 +101,11 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 * bcrypt
 * Multer
 * connect-flash
-* Express Validator *(Sprint 7)*
+* Express Validator 
 
 **Base de datos**
-* JSON *(Sprint 4)*
-* MySQL + Sequelize *(Sprint 6)*
+* JSON 
+* MySQL + Sequelize 
 
 **Herramientas**
 * Git / GitHub
@@ -116,7 +116,7 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 
 ## ▶️ Cómo correr el proyecto
 
-**Requisitos:** tener instalado Node.js
+**Requisitos:** Node.js y MySQL instalados
 
 ```bash
 # 1. Clonar el repositorio
@@ -125,7 +125,17 @@ git clone https://github.com/Prof-NkoCussi/DPFS_nicolas_cussi.git
 # 2. Instalar dependencias
 npm install
 
-# 3. Iniciar el servidor en modo desarrollo
+# 3. Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales de MySQL
+
+# 4. Crear la base de datos
+# Abrir MySQL Workbench y ejecutar: database/structure.sql
+
+# 5. Poblar la base de datos con datos de prueba
+node database/seeders.js
+
+# 6. Iniciar el servidor en modo desarrollo
 npm run dev
 ```
 
@@ -138,37 +148,50 @@ El servidor queda disponible en: `http://localhost:3000`
 ```
 DPFS_nicolas_cussi/
 │
-├── app.js                          
-├── package.json                    
+├── app.js                          ← Servidor principal Express
+├── package.json
+├── .env                            ← Variables de entorno (no sube a GitHub)
+├── .env.example                    ← Plantilla de variables de entorno
 │
-├── data/                           
+├── database/                       ← Sprint 6 — Base de datos
+│   ├── config.js                   ← Conexión Sequelize a MySQL
+│   ├── seeders.js                  ← Script para poblar la base de datos
+│   ├── structure.sql               ← Script de creación de tablas
+│   ├── der_ushuaia_musicstore.pdf  ← Diagrama DER
+│   └── models/
+│       ├── index.js                ← Relaciones entre modelos
+│       ├── Category.js
+│       ├── Product.js
+│       └── User.js
+│
+├── data/                           ← Sprint 4 — Datos JSON (reemplazados por MySQL)
 │   ├── products.json
 │   └── users.json
 │
-├── public/                         
+├── public/                         ← Archivos estáticos
 │   ├── images/
 │   │   ├── banner/
 │   │   ├── categories/
 │   │   ├── products/
-│   │   └── users/                  
+│   │   └── users/
 │   └── styles/
 │       ├── style.css
 │       ├── forms.css
 │       ├── productDetail.css
 │       └── productCart.css
 │
-├── scripts/                        
+├── scripts/
 │   └── hashPasswords.js
 │
-├── src/                            
+├── src/
 │   ├── controllers/
 │   │   ├── indexController.js
 │   │   ├── productsController.js
 │   │   └── usersController.js
 │   │
-│   ├── middlewares/                
-│   │   ├── auth.js
-│   │   └── multerConfig.js
+│   ├── middlewares/
+│   │   ├── auth.js                 ← isGuest, isUser, isAdmin
+│   │   └── multerConfig.js        ← Subida de imágenes
 │   │
 │   ├── routes/
 │   │   ├── index.js
@@ -185,20 +208,20 @@ DPFS_nicolas_cussi/
 │       │   ├── list.ejs
 │       │   ├── detail.ejs
 │       │   ├── cart.ejs
-│       │   ├── create.ejs          
-│       │   └── edit.ejs            
+│       │   ├── create.ejs
+│       │   └── edit.ejs
 │       └── users/
 │           ├── register.ejs
 │           ├── login.ejs
-│           └── profile.ejs         
+│           └── profile.ejs
 │
-├── Views/                          
+├── Views/                          ← Sprint 2 — Prototipos HTML estáticos
 │   ├── productDetail.html
 │   ├── productCart.html
 │   ├── register.html
 │   └── login.html
 │
-├── wireframes/                     
+├── wireframes/                     ← Sprint 1 — Wireframes
 │   ├── home.png
 │   ├── detalle_producto.png
 │   ├── carrito.png
@@ -226,6 +249,6 @@ DPFS_nicolas_cussi/
 | Sprint 3 | Node.js + Express + EJS | ✅ Completado |
 | Sprint 4 | CRUD con archivos JSON | ✅ Completado |
 | Sprint 5 | Usuarios y autenticación | ✅ Completado |
-| Sprint 6 | Base de datos MySQL + Sequelize | ⏳ Pendiente |
+| Sprint 6 | Base de datos MySQL + Sequelize | ✅ Completado |
 | Sprint 7 | Validaciones frontend y backend | ⏳ Pendiente |
 | Sprint 8 | API REST + Dashboard React | ⏳ Pendiente |

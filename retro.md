@@ -309,3 +309,62 @@ De cara al Sprint 6, el foco estará en migrar toda la lógica de JSON a MySQL c
 
 *Fecha de retrospectiva: Sprint 5 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
+
+---
+
+# 🌟 Retrospectiva — Sprint 6
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 6 — Base de datos MySQL + Sequelize
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Crear el script de seeders desde el inicio del sprint para no depender de datos hardcodeados durante el desarrollo.
+- Verificar las credenciales de MySQL en el `.env` antes de arrancar — un error de conexión puede bloquear todo el sprint.
+- Usar getters en los modelos Sequelize para transformar datos automáticamente (como el array de colores) — evita bugs en las vistas.
+
+---
+
+## 🔼 Hacer más
+
+- Probar cada query Sequelize por separado antes de integrarla al controller.
+- Revisar que el campo en la sesión (`role`) coincida con lo que verifican los middlewares — fue la causa del bug en `isAdmin`.
+- Verificar en Workbench después de cada migración que los datos se insertaron correctamente.
+
+---
+
+## ✅ Continuar haciendo
+
+- Separar la configuración de Sequelize en `database/config.js` y los modelos en `database/models/` — mantiene el código ordenado y fácil de escalar.
+- Usar `async/await` en todos los controllers — hace el código más legible que los callbacks.
+- Guardar credenciales sensibles en `.env` y asegurarse de que esté en `.gitignore` — nunca subir contraseñas al repositorio.
+
+---
+
+## 🔽 Hacer menos
+
+- Hardcodear IDs en las vistas — siempre usar los IDs reales que vienen de la base de datos.
+- Mezclar lógica de transformación de datos en las vistas — esa lógica va en los modelos o controllers.
+
+---
+
+## ❌ Dejar de hacer
+
+- Avanzar al siguiente sprint sin probar el CRUD completo con la base de datos real.
+- Ignorar los warnings de Sequelize — algunos son inofensivos pero otros indican problemas reales.
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 6 fue el más técnico y el de mayor impacto en la arquitectura del proyecto. Se migró toda la lógica de archivos JSON a MySQL con Sequelize, se creó el diagrama DER, los scripts SQL y los seeders para poblar la base. El mayor aprendizaje fue entender cómo Sequelize abstrae las queries SQL y cómo las relaciones entre modelos (`hasMany`, `belongsTo`) simplifican el acceso a datos relacionados.
+
+De cara al Sprint 7, el foco estará en agregar validaciones tanto en el backend (Express Validator) como en el frontend (JavaScript), protegiendo los formularios de datos inválidos.
+
+---
+
+*Fecha de retrospectiva: Sprint 6 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*
