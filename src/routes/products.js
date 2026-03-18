@@ -12,6 +12,10 @@ router.get('/',              controller.list);
 
 // GET /products/cart    — Público ⚠️ antes de /:id
 router.get('/cart',          controller.cart);
+router.post('/cart/add',     controller.addToCart);
+router.post('/cart/remove',  controller.removeFromCart);
+router.post('/cart/clear',   controller.clearCart);
+router.post('/cart/update',  controller.updateCart);
 
 // GET /products/create  — Solo admin
 router.get('/create',        isAdmin, controller.create);

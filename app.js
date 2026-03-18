@@ -20,6 +20,8 @@
 // Inicia el servidor en el puerto 3000
 //app.listen(3000, ...);
 
+require('dotenv').config();
+
 const express        = require('express');
 const path           = require('path');
 const methodOverride = require('method-override');
@@ -45,7 +47,7 @@ app.use(methodOverride('_method'));
 
 // ── Sesiones ─────────────────────────────────────────────────
 app.use(session({
-  secret: 'ushuaia-music-secret',
+  secret: process.env.SESSION_SECRET || 'ushuaia-music-secret',
   resave: false,
   saveUninitialized: false
 }));
@@ -58,6 +60,8 @@ app.use((req, res, next) => {
   res.locals.userLogged = req.session.userLogged || null;
   res.locals.successMsg = req.flash('success');
   res.locals.errorMsg   = req.flash('error');
+  const cart = req.session.cart || [];
+  res.locals.cartCount  = cart.reduce((sum, item) => sum + item.quantity, 0);
   next();
 });
 
@@ -76,8 +80,17 @@ app.use((req, res) => {
 });
 
 // ── Iniciar servidor ─────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-});
+const { sequelize } = require('./database/models');
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('✅ Conexión a MySQL exitosa');
+    app.listen(PORT, () => {
+      console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ Error al conectar con MySQL:', err.message);
+  });
 
 module.exports = app;

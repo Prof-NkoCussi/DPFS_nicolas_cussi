@@ -25,7 +25,9 @@ const isUser = (req, res, next) => {
 // Solo para administradores
 // Si no es admin → redirige al home
 const isAdmin = (req, res, next) => {
-  if (!req.session.userLogged || req.session.userLogged.category !== 'admin') {
+  const user = req.session.userLogged;
+  const role = user?.role || user?.category;
+  if (!user || role !== 'admin') {
     req.flash('error', 'No tenés permisos para acceder a esa sección.');
     return res.redirect('/');
   }
