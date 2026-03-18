@@ -4,6 +4,7 @@
 // ============================================================
 
 const bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
 const { User } = require('../../database/models');
 
 const controller = {
@@ -18,6 +19,13 @@ const controller = {
   // POST /users/register — Guardar nuevo usuario
   store: async (req, res) => {
     try {
+      // Verificar errores de validación
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        errors.array().forEach(e => req.flash('error', e.msg));
+        return res.redirect('/users/register');
+      }
+
       // Verificar si el email ya existe
       const emailExists = await User.findOne({ where: { email: req.body.email } });
       if (emailExists) {
@@ -57,6 +65,13 @@ const controller = {
   // POST /users/login — Procesar login
   authenticate: async (req, res) => {
     try {
+      // Verificar errores de validación
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        errors.array().forEach(e => req.flash('error', e.msg));
+        return res.redirect('/users/login');
+      }
+
       const user = await User.findOne({ where: { email: req.body.email } });
       if (!user) {
         req.flash('error', 'Email o contraseña incorrectos.');

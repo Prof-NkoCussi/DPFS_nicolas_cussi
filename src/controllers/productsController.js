@@ -3,6 +3,7 @@
 //  Sprint 6 — Sequelize (MySQL)
 // ============================================================
 
+const { validationResult } = require('express-validator');
 const { Product, Category } = require('../../database/models');
 
 const controller = {
@@ -58,6 +59,12 @@ const controller = {
   // POST /products — Guardar nuevo producto
   store: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        errors.array().forEach(e => req.flash('error', e.msg));
+        return res.redirect('/products/create');
+      }
+
       await Product.create({
         name:        req.body.name,
         description: req.body.description,
@@ -123,6 +130,12 @@ const controller = {
   // PUT /products/:id — Actualizar producto
   update: async (req, res) => {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        errors.array().forEach(e => req.flash('error', e.msg));
+        return res.redirect(`/products/${req.params.id}/edit`);
+      }
+
       const product = await Product.findByPk(req.params.id);
       if (!product) return res.status(404).send('Producto no encontrado');
       await product.update({
