@@ -169,6 +169,18 @@
   color: var(--color-navy);
 }
 
+.price-current .price-cents,
+.product-card-price .price-cents,
+.cart-item-price .price-cents,
+.cart-item-subtotal .price-cents,
+.summary-total .price-cents {
+  font-size: 0.45em;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 0;
+  color: inherit;
+}
+
 .price-old {
   font-size: var(--text-lg);
   color: var(--color-gray-400);

@@ -41,10 +41,10 @@
             <img src="/images/products/<%= product.image %>" alt="<%= product.name %>" class="product-card-img" />
           </div>
           <div class="product-card-body">
-            <p class="product-card-category"><%= product.category %></p>
+            <p class="product-card-category"><%= product.category ? product.category.name : '' %></p>
             <h3 class="product-card-name"><%= product.name %></h3>
             <div class="product-card-footer">
-              <div class="product-card-price">$<%= product.price.toLocaleString('es-AR') %></div>
+              <div class="product-card-price"><%- formatPrice(product.price) %></div>
               <a href="/products/<%= product.id %>" class="btn btn-primary btn-sm">Ver más</a>
             </div>
           </div>

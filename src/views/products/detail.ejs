@@ -58,7 +58,7 @@
         <div class="product-info">
 
           <!-- Categoría y nombre -->
-          <p class="product-info-category"><%= product.category %></p>
+          <p class="product-info-category"><%= product.category ? product.category.name : '' %></p>
           <h1 class="product-info-title"><%= product.name %></h1>
           <p class="product-info-sku text-muted">SKU: #<%= String(product.id).padStart(5, '0') %></p>
 
@@ -66,7 +66,7 @@
 
           <!-- Precio -->
           <div class="product-info-price">
-            <span class="price-current">$<%= product.price.toLocaleString('es-AR') %></span>
+            <span class="price-current"><%- formatPrice(product.price) %></span>
           </div>
 
           <!-- Colores -->
@@ -169,7 +169,7 @@
               <p class="product-card-category"><%= related.category ? related.category.name : '' %></p>
               <h3 class="product-card-name"><%= related.name %></h3>
               <div class="product-card-footer">
-                <div class="product-card-price">$<%= Number(related.price).toLocaleString('es-AR') %></div>
+                <div class="product-card-price"><%- formatPrice(related.price) %></div>
                 <a href="/products/<%= related.id %>" class="btn btn-primary btn-sm">Ver más</a>
               </div>
             </div>

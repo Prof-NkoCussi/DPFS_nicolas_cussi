@@ -62,6 +62,17 @@ app.use((req, res, next) => {
   res.locals.errorMsg   = req.flash('error');
   const cart = req.session.cart || [];
   res.locals.cartCount  = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Helper para formatear precios — $120.000 o $120.000<sup>99</sup>
+  res.locals.formatPrice = (price) => {
+    const num      = parseFloat(price) || 0;
+    const intPart  = Math.floor(num);
+    const decPart  = Math.round((num - intPart) * 100);
+    const intStr   = intPart.toLocaleString('es-AR');
+    if (decPart === 0) return `$${intStr}`;
+    return `$${intStr}<sup class="price-cents">${String(decPart).padStart(2, '0')}</sup>`;
+  };
+
   next();
 });
 
