@@ -108,6 +108,33 @@
     "price": 42000
   },
   {
+    "id": 13,
+    "name": "Sintetizador Analógico 25 Teclas",
+    "description": "Sintetizador analógico con 25 teclas, osciladores de onda múltiple, filtro paso bajo resonante y LFO. Ideal para producción electrónica y música experimental.",
+    "image": "teclado-02.png",
+    "category": "teclados",
+    "colors": ["negro", "plata"],
+    "price": 120000
+  },
+  {
+    "id": 14,
+    "name": "Pad de Percusión Electrónica",
+    "description": "Controlador de percusión con 16 pads sensibles a la velocidad, 30 kits de batería pregrabados y salida MIDI. Perfecto para producción y práctica silenciosa.",
+    "image": "bateria-01.png",
+    "category": "baterias",
+    "colors": ["negro"],
+    "price": 35000
+  },
+  {
+    "id": 15,
+    "name": "Micrófono de Solapa Inalámbrico",
+    "description": "Sistema inalámbrico UHF con micrófono de solapa incluido, rango de hasta 60 metros, batería recargable y receptor compacto. Ideal para conferencias y presentaciones.",
+    "image": "microfono-01.png",
+    "category": "microfonos",
+    "colors": ["negro", "blanco"],
+    "price": 28000
+  },
+  {
     "id": 10,
     "name": "Amplificador de Guitarra 40W",
     "description": "Amplificador combo de 40 watts con parlante de 12\", canal limpio y canal de overdrive, reverb incorporado y efectos de chorus y delay.",
