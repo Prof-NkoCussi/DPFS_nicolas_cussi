@@ -8,10 +8,6 @@
 
   <%- include('../partials/header') %>
 
-
-  <!-- ================================================
-       BREADCRUMB
-  ================================================ -->
   <div class="breadcrumb-wrapper">
     <div class="container">
       <nav class="breadcrumb">
@@ -22,25 +18,26 @@
     </div>
   </div>
 
-
-  <!-- ================================================
-       CARRITO
-  ================================================ -->
   <section class="section">
     <div class="container">
 
-      <!-- Título -->
       <div class="cart-header">
         <h1 class="cart-title">Carrito de <span>Compras</span></h1>
-        <p class="text-muted">3 productos en tu carrito</p>
+        <p class="text-muted"><%= cart.length %> producto<%= cart.length !== 1 ? 's' : '' %> en tu carrito</p>
       </div>
 
+      <% if (cart.length === 0) { %>
+        <div style="text-align:center; padding: 4rem 0;">
+          <p style="font-size:1.2rem; color: var(--color-text-muted);">Tu carrito está vacío.</p>
+          <a href="/products" class="btn btn-primary" style="margin-top:1rem;">Ver productos</a>
+        </div>
+
+      <% } else { %>
       <div class="cart-layout">
 
-        <!-- ── Columna izquierda: Productos ── -->
+        <!-- Columna izquierda: Productos -->
         <div class="cart-items">
 
-          <!-- Cabecera tabla -->
           <div class="cart-table-header">
             <span class="col-product">Producto</span>
             <span class="col-price">Precio</span>
@@ -48,91 +45,47 @@
             <span class="col-subtotal">Subtotal</span>
           </div>
 
-          <!-- Item 1 -->
-          <div class="cart-item" id="item-1">
+          <% cart.forEach(item => { %>
+          <div class="cart-item">
             <div class="cart-item-product">
-              <a href="/products/1">
-                <img src="/images/products/guitarra-01.png" alt="Guitarra Eléctrica Pro" class="cart-item-img" />
+              <a href="/products/<%= item.id %>">
+                <img src="/images/products/<%= item.image %>" alt="<%= item.name %>" class="cart-item-img" onerror="this.src='/images/products/default-product.png'" />
               </a>
               <div class="cart-item-info">
-                <a href="/products/1" class="cart-item-name">Guitarra Eléctrica Pro</a>
-                <p class="cart-item-attrs">Color: Negro &nbsp;|&nbsp; Marca: Fender</p>
-                <button class="cart-item-remove" onclick="removeItem('item-1')">🗑 Eliminar</button>
+                <a href="/products/<%= item.id %>" class="cart-item-name"><%= item.name %></a>
+                <form action="/products/cart/remove" method="POST" style="display:inline;">
+                  <input type="hidden" name="product_id" value="<%= item.id %>" />
+                  <button type="submit" class="cart-item-remove">🗑 Eliminar</button>
+                </form>
               </div>
             </div>
-            <div class="cart-item-price">$89.999</div>
-            <div class="cart-item-qty">
-              <div class="quantity-selector">
-                <button class="qty-btn" onclick="changeQty('qty-1', -1)">−</button>
-                <input type="number" id="qty-1" value="1" min="1" max="12" readonly />
-                <button class="qty-btn" onclick="changeQty('qty-1', 1)">+</button>
-              </div>
-            </div>
-            <div class="cart-item-subtotal" id="sub-1">$89.999</div>
-          </div>
 
-          <!-- Item 2 -->
-          <div class="cart-item" id="item-2">
-            <div class="cart-item-product">
-              <a href="/products/2">
-                <img src="/images/products/teclado-01.png" alt="Teclado MIDI" class="cart-item-img" />
-              </a>
-              <div class="cart-item-info">
-                <a href="/products/2" class="cart-item-name">Teclado MIDI 61 Teclas</a>
-                <p class="cart-item-attrs">Color: Blanco &nbsp;|&nbsp; Marca: Yamaha</p>
-                <button class="cart-item-remove" onclick="removeItem('item-2')">🗑 Eliminar</button>
-              </div>
-            </div>
-            <div class="cart-item-price">$64.500</div>
-            <div class="cart-item-qty">
-              <div class="quantity-selector">
-                <button class="qty-btn" onclick="changeQty('qty-2', -1)">−</button>
-                <input type="number" id="qty-2" value="2" min="1" max="12" readonly />
-                <button class="qty-btn" onclick="changeQty('qty-2', 1)">+</button>
-              </div>
-            </div>
-            <div class="cart-item-subtotal" id="sub-2">$129.000</div>
-          </div>
+            <div class="cart-item-price">$<%= item.price.toLocaleString('es-AR') %></div>
 
-          <!-- Item 3 -->
-          <div class="cart-item" id="item-3">
-            <div class="cart-item-product">
-              <a href="/products/3">
-                <img src="/images/products/microfono-01.png" alt="Micrófono Condensador" class="cart-item-img" />
-              </a>
-              <div class="cart-item-info">
-                <a href="/products/3" class="cart-item-name">Micrófono Condensador Pro</a>
-                <p class="cart-item-attrs">Color: Plateado &nbsp;|&nbsp; Marca: AKG</p>
-                <button class="cart-item-remove" onclick="removeItem('item-3')">🗑 Eliminar</button>
-              </div>
-            </div>
-            <div class="cart-item-price">$38.000</div>
             <div class="cart-item-qty">
-              <div class="quantity-selector">
-                <button class="qty-btn" onclick="changeQty('qty-3', -1)">−</button>
-                <input type="number" id="qty-3" value="1" min="1" max="12" readonly />
-                <button class="qty-btn" onclick="changeQty('qty-3', 1)">+</button>
-              </div>
+              <form action="/products/cart/update" method="POST" class="quantity-selector">
+                <input type="hidden" name="product_id" value="<%= item.id %>" />
+                <button type="submit" name="quantity" value="<%= item.quantity - 1 %>" class="qty-btn">−</button>
+                <input type="number" value="<%= item.quantity %>" min="1" max="12" readonly />
+                <button type="submit" name="quantity" value="<%= item.quantity + 1 %>" class="qty-btn">+</button>
+              </form>
             </div>
-            <div class="cart-item-subtotal" id="sub-3">$38.000</div>
-          </div>
 
-          <!-- Acciones del carrito -->
+            <div class="cart-item-subtotal">$<%= (item.price * item.quantity).toLocaleString('es-AR') %></div>
+          </div>
+          <% }) %>
+
           <div class="cart-actions">
             <a href="/products" class="btn btn-secondary btn-sm">← Seguir comprando</a>
-            <button class="btn btn-danger btn-sm" onclick="clearCart()">🗑 Vaciar carrito</button>
+            <form action="/products/cart/clear" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-danger btn-sm">🗑 Vaciar carrito</button>
+            </form>
           </div>
 
-          <!-- Cupón de descuento -->
           <div class="cart-coupon">
             <h3>¿Tenés un cupón de descuento?</h3>
             <div class="coupon-form">
-              <input
-                type="text"
-                class="form-input"
-                id="couponInput"
-                placeholder="Ingresá tu código aquí"
-              />
+              <input type="text" class="form-input" id="couponInput" placeholder="Ingresá tu código aquí" />
               <button class="btn btn-dark" onclick="applyCoupon()">Aplicar</button>
             </div>
             <p class="coupon-msg" id="couponMsg"></p>
@@ -140,19 +93,14 @@
 
         </div>
 
-
-        <!-- ── Columna derecha: Resumen ── -->
+        <!-- Columna derecha: Resumen -->
         <div class="cart-summary">
           <h2 class="cart-summary-title">Resumen del pedido</h2>
 
           <div class="cart-summary-rows">
             <div class="summary-row">
-              <span>Subtotal (4 items)</span>
-              <span id="summarySubtotal">$256.999</span>
-            </div>
-            <div class="summary-row">
-              <span>Descuento</span>
-              <span class="text-success" id="summaryDiscount">− $0</span>
+              <span>Subtotal (<%= cartCount %> items)</span>
+              <span>$<%= total.toLocaleString('es-AR') %></span>
             </div>
             <div class="summary-row">
               <span>Envío</span>
@@ -164,18 +112,12 @@
 
           <div class="summary-total">
             <span>Total</span>
-            <span id="summaryTotal">$256.999</span>
+            <span>$<%= total.toLocaleString('es-AR') %></span>
           </div>
 
-          <a href="#" class="btn btn-primary btn-lg btn-full">
-            Finalizar compra
-          </a>
+          <a href="#" class="btn btn-primary btn-lg btn-full">Finalizar compra</a>
+          <a href="/products" class="cart-summary-back">← Seguir comprando</a>
 
-          <a href="/products" class="cart-summary-back">
-            ← Seguir comprando
-          </a>
-
-          <!-- Métodos de pago -->
           <div class="payment-methods">
             <p class="payment-label">Métodos de pago aceptados</p>
             <div class="payment-badges">
@@ -185,47 +127,20 @@
               <span class="payment-badge">PAYPAL</span>
             </div>
           </div>
-
         </div>
 
       </div>
+      <% } %>
+
     </div>
   </section>
 
-
   <%- include('../partials/footer') %>
 
-
-  <!-- ================================================
-       JS — Carrito básico
-  ================================================ -->
   <script>
-    function removeItem(id) {
-      const item = document.getElementById(id);
-      if (item) {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-20px)';
-        item.style.transition = 'all 0.3s ease';
-        setTimeout(() => item.remove(), 300);
-      }
-    }
-
-    function changeQty(inputId, delta) {
-      const input = document.getElementById(inputId);
-      const newVal = parseInt(input.value) + delta;
-      if (newVal >= 1 && newVal <= 12) {
-        input.value = newVal;
-      }
-    }
-
-    function clearCart() {
-      const items = document.querySelectorAll('.cart-item');
-      items.forEach(item => item.remove());
-    }
-
     function applyCoupon() {
       const code = document.getElementById('couponInput').value.trim().toUpperCase();
-      const msg = document.getElementById('couponMsg');
+      const msg  = document.getElementById('couponMsg');
       if (code === 'MUSIC10') {
         msg.textContent = '✅ Cupón aplicado — 10% de descuento';
         msg.style.color = 'var(--color-success)';

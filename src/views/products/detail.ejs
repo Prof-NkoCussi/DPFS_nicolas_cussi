@@ -98,16 +98,23 @@
 
           <!-- Botones de acción -->
           <div class="product-info-actions">
-            <a href="/products/cart" class="btn btn-primary btn-lg">Agregar al carrito</a>
-            <a href="/products/<%= product.id %>/edit" class="btn btn-secondary">Editar</a>
+            <form action="/products/cart/add" method="POST" style="display:inline;">
+              <input type="hidden" name="product_id" value="<%= product.id %>" />
+              <button type="submit" class="btn btn-primary btn-lg">Agregar al carrito</button>
+            </form>
+            <% if (userLogged && (userLogged.role === 'admin' || userLogged.category === 'admin')) { %>
+              <a href="/products/<%= product.id %>/edit" class="btn btn-secondary">Editar</a>
+            <% } %>
           </div>
 
-          <!-- Eliminar producto -->
+          <!-- Eliminar producto — solo admin -->
+          <% if (userLogged && (userLogged.role === 'admin' || userLogged.category === 'admin')) { %>
           <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="margin-top: 1rem;">
             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este producto?')">
               Eliminar producto
             </button>
           </form>
+          <% } %>
 
           <!-- Banner envío -->
           <div class="product-shipping">
@@ -152,78 +159,25 @@
 
       <div class="products-grid">
 
-        <div class="product-card">
-          <div class="product-card-img-wrapper">
-            <img src="/images/products/guitarra-02.png" alt="Guitarra Acústica" class="product-card-img" />
-          </div>
-          <div class="product-card-body">
-            <p class="product-card-category">Guitarras</p>
-            <h3 class="product-card-name">Guitarra Acústica Folk</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★☆</span>
-              <span class="text-muted">(31)</span>
+        <% if (relatedProducts.length > 0) { %>
+          <% relatedProducts.forEach(related => { %>
+          <div class="product-card">
+            <div class="product-card-img-wrapper">
+              <img src="/images/products/<%= related.image %>" alt="<%= related.name %>" class="product-card-img" />
             </div>
-            <div class="product-card-footer">
-              <div class="product-card-price">$54.000</div>
-              <a href="/products/5" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-img-wrapper">
-            <img src="/images/products/amplificador-01.jpg" alt="Amplificador" class="product-card-img" />
-            <span class="badge badge-turquoise product-badge">Nuevo</span>
-          </div>
-          <div class="product-card-body">
-            <p class="product-card-category">Accesorios</p>
-            <h3 class="product-card-name">Amplificador 40W</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="text-muted">(22)</span>
-            </div>
-            <div class="product-card-footer">
-              <div class="product-card-price">$72.500</div>
-              <a href="/products/6" class="btn btn-primary btn-sm">Ver más</a>
+            <div class="product-card-body">
+              <p class="product-card-category"><%= related.category ? related.category.name : '' %></p>
+              <h3 class="product-card-name"><%= related.name %></h3>
+              <div class="product-card-footer">
+                <div class="product-card-price">$<%= Number(related.price).toLocaleString('es-AR') %></div>
+                <a href="/products/<%= related.id %>" class="btn btn-primary btn-sm">Ver más</a>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-img-wrapper">
-            <img src="/images/products/pedal-01.png" alt="Pedal de efectos" class="product-card-img" />
-          </div>
-          <div class="product-card-body">
-            <p class="product-card-category">Accesorios</p>
-            <h3 class="product-card-name">Pedal de Efectos Multi-FX</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★☆</span>
-              <span class="text-muted">(15)</span>
-            </div>
-            <div class="product-card-footer">
-              <div class="product-card-price">$38.000</div>
-              <a href="/products/7" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-img-wrapper">
-            <img src="/images/products/cuerdas-01.jpg" alt="Cuerdas" class="product-card-img" />
-          </div>
-          <div class="product-card-body">
-            <p class="product-card-category">Accesorios</p>
-            <h3 class="product-card-name">Cuerdas Eléctricas Set x6</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="text-muted">(87)</span>
-            </div>
-            <div class="product-card-footer">
-              <div class="product-card-price">$8.500</div>
-              <a href="/products/8" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
+          <% }) %>
+        <% } else { %>
+          <p class="text-muted">No hay productos relacionados.</p>
+        <% } %>
 
       </div>
     </div>
