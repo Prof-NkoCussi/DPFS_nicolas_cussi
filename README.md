@@ -154,10 +154,11 @@ DPFS_nicolas_cussi/
 ├── .env.example                    ← Plantilla de variables de entorno
 │
 ├── database/                       ← Sprint 6 — Base de datos
-│   ├── config.js                   ← Conexión Sequelize a MySQL
-│   ├── seeders.js                  ← Script para poblar la base de datos
-│   ├── structure.sql               ← Script de creación de tablas
-│   ├── der_ushuaia_musicstore.pdf  ← Diagrama DER
+│   ├── config.js                        ← Conexión Sequelize a MySQL
+│   ├── seeders.js                       ← Script para poblar la base de datos
+│   ├── structure.sql                    ← Script de creación de tablas
+│   ├── der_ushuaia_musicstore.drawio    ← Diagrama DER editable
+│   ├── der_ushuaia_musicstore.pdf       ← Diagrama DER (entregable)
 │   └── models/
 │       ├── index.js                ← Relaciones entre modelos
 │       ├── Category.js
@@ -191,7 +192,8 @@ DPFS_nicolas_cussi/
 │   │
 │   ├── middlewares/
 │   │   ├── auth.js                 ← isGuest, isUser, isAdmin
-│   │   └── multerConfig.js        ← Subida de imágenes
+│   │   ├── multerConfig.js         ← Subida de imágenes
+│   │   └── validations.js          ← Reglas express-validator (Sprint 7)
 │   │
 │   ├── routes/
 │   │   ├── index.js
@@ -250,5 +252,5 @@ DPFS_nicolas_cussi/
 | Sprint 4 | CRUD con archivos JSON | ✅ Completado |
 | Sprint 5 | Usuarios y autenticación | ✅ Completado |
 | Sprint 6 | Base de datos MySQL + Sequelize | ✅ Completado |
-| Sprint 7 | Validaciones frontend y backend | ⏳ Pendiente |
+| Sprint 7 | Validaciones frontend y backend | ✅ Completado |
 | Sprint 8 | API REST + Dashboard React | ⏳ Pendiente |

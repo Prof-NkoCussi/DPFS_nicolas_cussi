@@ -368,3 +368,59 @@ De cara al Sprint 7, el foco estará en agregar validaciones tanto en el backend
 
 *Fecha de retrospectiva: Sprint 6 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
+
+---
+
+# 🌟 Retrospectiva — Sprint 7
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 7 — Validaciones Frontend y Backend
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Definir las reglas de validación antes de escribir código — tener claro qué se valida y dónde evita inconsistencias entre frontend y backend.
+- Crear el archivo de validaciones centralizado (`middlewares/validations.js`) desde el inicio del sprint para no dispersar reglas en diferentes archivos.
+
+---
+
+## 🔼 Hacer más
+
+- Probar las validaciones con datos inválidos de cada tipo (vacío, muy corto, formato incorrecto) antes de dar por terminado cada formulario.
+- Verificar que los flash messages lleguen correctamente a las vistas — el nombre de la variable en `res.locals` debe coincidir exactamente con lo que usa el EJS.
+
+---
+
+## ✅ Continuar haciendo
+
+- Separar las validaciones en un archivo dedicado (`validations.js`) — hace el código más ordenado y fácil de mantener.
+- Aplicar validaciones tanto en backend como en frontend — el frontend mejora la UX, el backend es la protección real.
+- Usar `res.locals` para variables globales como `errorMsg` y `successMsg` — disponibles en todas las vistas sin pasarlas manualmente.
+
+---
+
+## 🔽 Hacer menos
+
+- Hardcodear opciones de select en las vistas (como categorías) — siempre traerlas de la base de datos para mantener consistencia.
+- Duplicar lógica de validación entre rutas — centralizarla en middlewares reutilizables.
+
+---
+
+## ❌ Dejar de hacer
+
+- Avanzar sin verificar que los mensajes de error llegan a la vista — un flash message seteado que no se muestra da la ilusión de que la validación no funciona.
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 7 completó la capa de validaciones del proyecto. Se implementó `express-validator` en el backend para registro, login y productos, y validaciones JavaScript en el frontend para los mismos formularios. El mayor aprendizaje fue entender la diferencia entre validación de UX (frontend, puede deshabilitarse) y validación de seguridad (backend, siempre activa).
+
+De cara al Sprint 8, el foco estará en exponer los datos como API REST y construir un dashboard en React que los consuma.
+
+---
+
+*Fecha de retrospectiva: Sprint 7 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*
