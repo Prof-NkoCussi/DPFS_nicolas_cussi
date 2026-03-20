@@ -30,7 +30,7 @@ const session        = require('express-session');
 const flash          = require('connect-flash');
 
 const app  = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // ── CORS (permite pedidos desde el dashboard React) ──────────
 app.use(cors({ origin: 'http://localhost:5173' }));
