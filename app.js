@@ -24,12 +24,16 @@ require('dotenv').config();
 
 const express        = require('express');
 const path           = require('path');
+const cors           = require('cors');
 const methodOverride = require('method-override');
 const session        = require('express-session');
 const flash          = require('connect-flash');
 
 const app  = express();
 const PORT = 3000;
+
+// ── CORS (permite pedidos desde el dashboard React) ──────────
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 // ── Motor de templates ───────────────────────────────────────
 app.set('view engine', 'ejs');
@@ -80,10 +84,12 @@ app.use((req, res, next) => {
 const indexRouter    = require('./src/routes/index');
 const productsRouter = require('./src/routes/products');
 const usersRouter    = require('./src/routes/users');
+const apiRouter      = require('./src/routes/api');
 
 app.use('/',         indexRouter);
 app.use('/products', productsRouter);
 app.use('/users',    usersRouter);
+app.use('/api',      apiRouter);
 
 // ── Manejo de errores 404 ────────────────────────────────────
 app.use((req, res) => {
