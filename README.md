@@ -21,7 +21,7 @@ El sitio está orientado a personas interesadas en la música, desde principiant
 
 El público principal está compuesto por:
 
-* Jóvenes y adultos entre **16 y 45 años**
+* Jóvenes y adultos 
 * Estudiantes de música
 * Músicos aficionados y profesionales
 * Personas interesadas en instrumentos y equipamiento musical
@@ -90,13 +90,13 @@ Tienda dedicada a la comercialización de instrumentos musicales y equipos de so
 * HTML5
 * CSS3
 * JavaScript
-* EJS (motor de templates)
+* EJS 
 * React 
 
 **Backend**
 * Node.js
 * Express
-* method-override *(PUT y DELETE desde formularios HTML)*
+* method-override 
 * express-session
 * bcrypt
 * Multer
@@ -269,3 +269,6 @@ DPFS_nicolas_cussi/
 | Sprint 6 | Base de datos MySQL + Sequelize | ✅ Completado |
 | Sprint 7 | Validaciones frontend y backend | ✅ Completado |
 | Sprint 8 | API REST + Dashboard React | ✅ Completado |
+
+*Proyecto: Ushuaia MusicStore — FINALIZADO*
+*Digital House Full Stack - 2026*
