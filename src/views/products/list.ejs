@@ -30,7 +30,9 @@
 
       <div class="section-header">
         <h1 class="section-title">Todos los <span>Productos</span></h1>
-        <a href="/products/create" class="btn btn-primary btn-sm">+ Agregar producto</a>
+        <% if (userLogged && userLogged.role === 'admin') { %>
+          <a href="/products/create" class="btn btn-primary btn-sm">+ Agregar producto</a>
+        <% } %>
       </div>
 
       <div class="products-grid">

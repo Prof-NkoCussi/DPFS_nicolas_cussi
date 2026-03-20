@@ -24,7 +24,7 @@
       </div>
 
       <a href="/products" class="nav-link">Productos</a>
-      <a href="#" class="nav-link">Contacto</a>
+      <a href="/contact" class="nav-link">Contacto</a>
     </nav>
 
     <!-- Acciones -->
@@ -39,7 +39,7 @@
           </a>
           <div class="nav-dropdown-menu">
             <a href="/users/profile">Mi perfil</a>
-            <% if (userLogged.category === 'admin') { %>
+            <% if (userLogged.role === 'admin') { %>
               <a href="/products/create">Agregar producto</a>
             <% } %>
             <a href="/users/logout">Cerrar sesión</a>
@@ -52,9 +52,11 @@
       <% } %>
 
       <span class="navbar-separator"></span>
-      <a href="/products/cart" class="navbar-cart">
-        🛒 Carrito <span class="cart-count"><%= cartCount %></span>
-      </a>
+      <% if (!userLogged || userLogged.role !== 'admin') { %>
+        <a href="/products/cart" class="navbar-cart">
+          🛒 Carrito <span class="cart-count"><%= cartCount %></span>
+        </a>
+      <% } %>
 
     </div>
 
