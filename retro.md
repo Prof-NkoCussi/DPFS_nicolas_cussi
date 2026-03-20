@@ -50,7 +50,7 @@ El Sprint 1 fue una buena base para el proyecto. Se logró definir la temática,
 
 ---
 
-*Fecha de retrospectiva: Sprint 1 finalizado*  
+*Sprint 1 finalizado*  
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -133,7 +133,7 @@ importante de la estructura de carpetas.
 
 ---
 
-*Fecha de retrospectiva: Sprint 2 finalizado*
+*Sprint 2 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -192,7 +192,7 @@ De cara al Sprint 4, el foco estará en conectar las vistas con datos reales pro
 
 ---
 
-*Fecha de retrospectiva: Sprint 3 finalizado*
+*Sprint 3 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -249,7 +249,7 @@ De cara al Sprint 5, el foco estará en los usuarios: registro con imagen (Multe
 
 ---
 
-*Fecha de retrospectiva: Sprint 4 finalizado*
+*Sprint 4 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -307,7 +307,7 @@ De cara al Sprint 6, el foco estará en migrar toda la lógica de JSON a MySQL c
 
 ---
 
-*Fecha de retrospectiva: Sprint 5 finalizado*
+*Sprint 5 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -366,7 +366,7 @@ De cara al Sprint 7, el foco estará en agregar validaciones tanto en el backend
 
 ---
 
-*Fecha de retrospectiva: Sprint 6 finalizado*
+*Sprint 6 finalizado*
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
 
 ---
@@ -422,5 +422,62 @@ De cara al Sprint 8, el foco estará en exponer los datos como API REST y constr
 
 ---
 
-*Fecha de retrospectiva: Sprint 7 finalizado*
+*Sprint 7 finalizado*
+*Proyecto: Ushuaia MusicStore — Digital House Full Stack*
+
+---
+
+# 🌟 Retrospectiva — Sprint 8
+
+**Proyecto:** Ushuaia MusicStore
+**Sprint:** 8 — API REST + Dashboard React
+**Dinámica:** Estrella de Mar (Starfish Retrospective)
+
+---
+
+## ⭐ Comenzar a hacer
+
+- Diseñar los endpoints de la API antes de construir el dashboard — saber exactamente qué datos devuelve cada endpoint facilita el desarrollo del frontend.
+- Configurar el proxy de Vite desde el inicio del proyecto React para evitar problemas de CORS durante el desarrollo.
+- Agregar CORS al servidor Express desde el momento en que se expone una API — cualquier cliente externo lo va a necesitar.
+
+---
+
+## 🔼 Hacer más
+
+- Probar los endpoints directamente en el navegador o con Thunder Client antes de consumirlos desde React.
+- Verificar que ambos servidores (Express en :3000 y Vite en :5173) estén corriendo antes de probar el dashboard.
+
+---
+
+## ✅ Continuar haciendo
+
+- Separar la API en su propio archivo de rutas (`api.js`) y controller (`apiController.js`) — mantiene el código organizado y fácil de extender.
+- Usar `Promise.all` en React para cargar múltiples endpoints en paralelo — mejora la performance del dashboard.
+- Estructurar los componentes React por responsabilidad — `StatCard`, `LastCreated`, `CategoryList`, `ProductTable` — hace el código más legible y mantenible.
+
+---
+
+## 🔽 Hacer menos
+
+- Mezclar lógica de negocio en los componentes React — los componentes deben solo mostrar datos, no procesarlos.
+- Hardcodear URLs en los componentes — usar el proxy de Vite o variables de entorno.
+
+---
+
+## ❌ Dejar de hacer
+
+- Avanzar sin tener el servidor Express corriendo — el dashboard depende de la API y no funciona sin ella.
+
+---
+
+## 📌 Conclusión general
+
+El Sprint 8 marcó el cierre del proyecto. Se expusieron los datos del sitio como API REST con cuatro endpoints funcionales y se construyó un dashboard en React que los consume en tiempo real. El mayor aprendizaje fue entender la arquitectura desacoplada: un backend Express como proveedor de datos y un frontend React como consumidor independiente.
+
+Con este sprint finalizado, el proyecto **Ushuaia MusicStore** está completo — desde la planificación y el maquetado hasta la base de datos, autenticación, validaciones y dashboard de administración. Un recorrido completo por el stack de un desarrollador Full Stack.
+
+---
+
+*Sprint 8 finalizado — Proyecto completo* 🎸
 *Proyecto: Ushuaia MusicStore — Digital House Full Stack*
