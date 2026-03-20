@@ -153,12 +153,24 @@ DPFS_nicolas_cussi/
 ├── .env                            ← Variables de entorno (no sube a GitHub)
 ├── .env.example                    ← Plantilla de variables de entorno
 │
+├── dashboard/                      ← Sprint 8 — Dashboard React (Vite)
+│   ├── src/
+│   │   ├── App.jsx                 ← Componente principal
+│   │   ├── App.css
+│   │   └── components/
+│   │       ├── StatCard.jsx        ← Panel de totales
+│   │       ├── LastCreated.jsx     ← Último producto/usuario creado
+│   │       ├── CategoryList.jsx    ← Categorías con total de productos
+│   │       └── ProductTable.jsx    ← Tabla de productos
+│   ├── vite.config.js              ← Proxy hacia API Express
+│   └── package.json
+│
 ├── database/                       ← Sprint 6 — Base de datos
-│   ├── config.js                        ← Conexión Sequelize a MySQL
-│   ├── seeders.js                       ← Script para poblar la base de datos
-│   ├── structure.sql                    ← Script de creación de tablas
-│   ├── der_ushuaia_musicstore.drawio    ← Diagrama DER editable
-│   ├── der_ushuaia_musicstore.pdf       ← Diagrama DER (entregable)
+│   ├── config.js                   ← Conexión Sequelize a MySQL
+│   ├── seeders.js                  ← Script para poblar la base de datos
+│   ├── structure.sql               ← Script de creación de tablas
+│   ├── der_ushuaia_musicstore.drawio ← Diagrama DER editable
+│   ├── der_ushuaia_musicstore.pdf  ← Diagrama DER (entregable)
 │   └── models/
 │       ├── index.js                ← Relaciones entre modelos
 │       ├── Category.js
@@ -188,7 +200,8 @@ DPFS_nicolas_cussi/
 │   ├── controllers/
 │   │   ├── indexController.js
 │   │   ├── productsController.js
-│   │   └── usersController.js
+│   │   ├── usersController.js
+│   │   └── apiController.js        ← Sprint 8 — Endpoints API REST
 │   │
 │   ├── middlewares/
 │   │   ├── auth.js                 ← isGuest, isUser, isAdmin
@@ -196,12 +209,14 @@ DPFS_nicolas_cussi/
 │   │   └── validations.js          ← Reglas express-validator (Sprint 7)
 │   │
 │   ├── routes/
-│   │   ├── index.js
+│   │   ├── index.js                ← Home + Contacto
 │   │   ├── products.js
-│   │   └── users.js
+│   │   ├── users.js
+│   │   └── api.js                  ← Sprint 8 — Rutas API REST
 │   │
 │   └── views/
-│       ├── index.ejs
+│       ├── index.ejs               ← Home
+│       ├── contact.ejs             ← Página de contacto
 │       ├── partials/
 │       │   ├── head.ejs
 │       │   ├── header.ejs
@@ -253,4 +268,4 @@ DPFS_nicolas_cussi/
 | Sprint 5 | Usuarios y autenticación | ✅ Completado |
 | Sprint 6 | Base de datos MySQL + Sequelize | ✅ Completado |
 | Sprint 7 | Validaciones frontend y backend | ✅ Completado |
-| Sprint 8 | API REST + Dashboard React | ⏳ Pendiente |
+| Sprint 8 | API REST + Dashboard React | ✅ Completado |
